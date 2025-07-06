@@ -1,15 +1,19 @@
-// src/components/AgentCard.tsx
+"use client"
+
 import * as React from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-type AgentCardProps = {
+export const AgentCard = ({
+  name,
+  description,
+  status,
+  children,
+}: {
   name: string
   description: string
   status: "active" | "idle" | "error"
   children?: React.ReactNode
-}
-
-export const AgentCard = ({ name, description, status, children }: AgentCardProps) => {
+}) => {
   const statusColor =
     status === "active"
       ? "text-green-500"
