@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as class_variance_authority_types from 'class-variance-authority/types';
 import { VariantProps } from 'class-variance-authority';
+import { ToasterProps } from 'sonner';
 
 declare const AgentCard: ({ name, description, status, children, }: {
     name: string;
@@ -25,4 +26,26 @@ declare function CardAction({ className, ...props }: React.ComponentProps<"div">
 declare function CardContent({ className, ...props }: React.ComponentProps<"div">): React.JSX.Element;
 declare function CardFooter({ className, ...props }: React.ComponentProps<"div">): React.JSX.Element;
 
-export { AgentCard, Button, Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, buttonVariants };
+declare const PromptForm: ({ onSubmit }: {
+    onSubmit: (input: string) => void;
+}) => React.JSX.Element;
+
+declare const StatusBadge: ({ status }: {
+    status: "success" | "pending" | "error";
+}) => React.JSX.Element;
+
+declare const Toaster: ({ ...props }: ToasterProps) => React.JSX.Element;
+
+declare const DashboardShell: ({ children, sidebar, topbar, }: {
+    children: React.ReactNode;
+    sidebar?: React.ReactNode;
+    topbar?: React.ReactNode;
+}) => React.JSX.Element;
+
+declare const Sidebar: () => React.JSX.Element;
+
+declare const Topbar: () => React.JSX.Element;
+
+declare function Input({ className, type, ...props }: React.ComponentProps<"input">): React.JSX.Element;
+
+export { AgentCard, Button, Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, DashboardShell, Input, PromptForm, Sidebar, StatusBadge, Toaster, Topbar, buttonVariants };
