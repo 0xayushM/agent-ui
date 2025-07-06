@@ -1,0 +1,14 @@
+// tsconfig.build.json
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "noEmit": false,
+      "declaration": true,
+      "emitDeclarationOnly": true,
+      "declarationMap": false,
+      "outDir": "dist",
+      "incremental": false
+    },
+    "include": ["src"]
+  }
+  

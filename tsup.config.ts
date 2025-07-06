@@ -4,7 +4,8 @@ import { defineConfig } from "tsup"
 export default defineConfig({
   entry: ["src/index.ts"],
   format: ["esm", "cjs"],
-  dts: true, // generate .d.ts types
+  dts: true,
+  tsconfig: "tsconfig.build.json",
   clean: true,
-  external: ["react", "react-dom"] // peer dependencies
+  external: ["react", "react-dom"]
 })
