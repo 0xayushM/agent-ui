@@ -122,7 +122,12 @@ function CardFooter(_a) {
 }
 
 // src/components/ui/agentCard.tsx
-var AgentCard = ({ name, description, status, children }) => {
+var AgentCard = ({
+  name,
+  description,
+  status,
+  children
+}) => {
   const statusColor = status === "active" ? "text-green-500" : status === "error" ? "text-red-500" : "text-muted-foreground";
   return /* @__PURE__ */ React2.createElement(Card, { className: "w-full shadow-sm border" }, /* @__PURE__ */ React2.createElement(CardHeader, null, /* @__PURE__ */ React2.createElement(CardTitle, { className: "flex justify-between items-center" }, name, /* @__PURE__ */ React2.createElement("span", { className: `text-sm font-medium ${statusColor}` }, status)), /* @__PURE__ */ React2.createElement("p", { className: "text-sm text-muted-foreground" }, description)), /* @__PURE__ */ React2.createElement(CardContent, null, children));
 };

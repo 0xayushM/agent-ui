@@ -2,13 +2,12 @@ import * as React from 'react';
 import * as class_variance_authority_types from 'class-variance-authority/types';
 import { VariantProps } from 'class-variance-authority';
 
-type AgentCardProps = {
+declare const AgentCard: ({ name, description, status, children, }: {
     name: string;
     description: string;
     status: "active" | "idle" | "error";
     children?: React.ReactNode;
-};
-declare const AgentCard: ({ name, description, status, children }: AgentCardProps) => React.JSX.Element;
+}) => React.JSX.Element;
 
 declare const buttonVariants: (props?: ({
     variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined;
