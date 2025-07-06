@@ -69,8 +69,11 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
-// src/components/ui/card.tsx
+// src/components/ui/agentCard.tsx
 var React2 = __toESM(require("react"));
+
+// src/components/ui/card.tsx
+var React = __toESM(require("react"));
 
 // src/lib/utils.ts
 var import_clsx = require("clsx");
@@ -82,7 +85,7 @@ function cn(...inputs) {
 // src/components/ui/card.tsx
 function Card(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "div",
     __spreadValues({
       "data-slot": "card",
@@ -95,7 +98,7 @@ function Card(_a) {
 }
 function CardHeader(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-header",
@@ -108,7 +111,7 @@ function CardHeader(_a) {
 }
 function CardTitle(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-title",
@@ -118,7 +121,7 @@ function CardTitle(_a) {
 }
 function CardDescription(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-description",
@@ -128,7 +131,7 @@ function CardDescription(_a) {
 }
 function CardAction(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-action",
@@ -141,7 +144,7 @@ function CardAction(_a) {
 }
 function CardContent(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-content",
@@ -151,7 +154,7 @@ function CardContent(_a) {
 }
 function CardFooter(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-footer",
@@ -163,7 +166,7 @@ function CardFooter(_a) {
 // src/components/ui/agentCard.tsx
 var AgentCard = ({ name, description, status, children }) => {
   const statusColor = status === "active" ? "text-green-500" : status === "error" ? "text-red-500" : "text-muted-foreground";
-  return /* @__PURE__ */ React.createElement(Card, { className: "w-full shadow-sm border" }, /* @__PURE__ */ React.createElement(CardHeader, null, /* @__PURE__ */ React.createElement(CardTitle, { className: "flex justify-between items-center" }, name, /* @__PURE__ */ React.createElement("span", { className: `text-sm font-medium ${statusColor}` }, status)), /* @__PURE__ */ React.createElement("p", { className: "text-sm text-muted-foreground" }, description)), /* @__PURE__ */ React.createElement(CardContent, null, children));
+  return /* @__PURE__ */ React2.createElement(Card, { className: "w-full shadow-sm border" }, /* @__PURE__ */ React2.createElement(CardHeader, null, /* @__PURE__ */ React2.createElement(CardTitle, { className: "flex justify-between items-center" }, name, /* @__PURE__ */ React2.createElement("span", { className: `text-sm font-medium ${statusColor}` }, status)), /* @__PURE__ */ React2.createElement("p", { className: "text-sm text-muted-foreground" }, description)), /* @__PURE__ */ React2.createElement(CardContent, null, children));
 };
 
 // src/components/ui/button.tsx
