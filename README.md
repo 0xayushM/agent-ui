@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 @0xayushm/agentui — Dashboard UI Component Library
 
-## Getting Started
+> Reusable, composable, and accessible dashboard components powered by [shadcn/ui](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/), and [Tailwind CSS](https://tailwindcss.com/).
 
-First, run the development server:
+
+## 🚀 Why AgentUI?
+
+After building multiple dashboards for our product [BrewMyAgent](https://brewmyagent.com) and side projects, I realized I was recreating the same components over and over — buttons, cards, toasts, layouts... the whole drill.
+
+So I created this library to:
+- 📦 Package the components I was using again and again
+- 🧱 Provide a solid base for any AI or analytics dashboard
+- 🔁 Save dev hours with reusable UI logic
+- 🌙 Support dark/light mode by default
+
+
+## ✨ Features
+
+- Built with **Next.js** + **shadcn/ui**
+- Styled using **TailwindCSS**
+- Composed using **Radix Primitives**
+- Shipped via **tsup** in both ESM and CJS formats
+- **TypeScript-first** with auto-generated `.d.ts`
+- Works with **Storybook** for isolated previews
+- Easily customizable — bring your own theme
+
+## 📦 Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install @0xayushm/agentui
+```
+Then import components in your app:
+
+```tsx
+import { DashboardShell, AgentCard } from "@0xayushm/agentui"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 Storybook
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run storybook
+```
+Browse your components locally at: http://localhost:6006
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Usage Example
 
-## Learn More
+```tsx
+import { DashboardShell, AgentCard } from "@0xayushm/agentui"
 
-To learn more about Next.js, take a look at the following resources:
+export default function DashboardPage() {
+  return (
+    <DashboardShell>
+      <AgentCard
+        name="Finance Agent"
+        description="Categorizes your transactions"
+        status="active"
+      />
+    </DashboardShell>
+  )
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Clone and build locally:
+```bash
+git clone https://github.com/0xayushm/agentui.git
+cd agentui
+npm install
+npm run build
+```
 
-## Deploy on Vercel
+## 📚 Docs & Contribution
+This library is under active development and open to contributions!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🧩 Browse components in Storybook
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📖 Read the [Blog Post](https://0xayushm.hashnode.dev/custom-ui-library) on how it was built
+
+🙌 PRs are welcome!
+
+Planning to add: Charts, Tables, AI prompts UI, Settings Panels — and more.
+```
+git clone https://github.com/0xayushm/agentui.git
+cd agentui
+npm install
+npm run build
+```
+
+## 📚 Docs & Contribution
+This library is under active development and open to contributions!
+
+- 🧩 Browse components in Storybook
+- 📖 Read the Blog Post on how it was built
+- 🙌 PRs are welcome!
+
+Planning to add: Charts, Tables, AI prompts UI, Settings Panels — and more.
+
+## ⭐ Found it useful?
+
+- 🌟 Star this repo
+- 📥 Share with dev friends
+- 💡 Contribute your own component!
+
+Let’s build clean UIs, together. 🚀
