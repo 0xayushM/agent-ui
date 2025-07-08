@@ -34,6 +34,9 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -55,6 +58,38 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/components/ui/sonner.tsx
+var sonner_exports = {};
+__export(sonner_exports, {
+  Toaster: () => Toaster
+});
+var import_next_themes, import_sonner, import_jsx_runtime8, Toaster;
+var init_sonner = __esm({
+  "src/components/ui/sonner.tsx"() {
+    "use strict";
+    "use client";
+    import_next_themes = require("next-themes");
+    import_sonner = require("sonner");
+    import_jsx_runtime8 = require("react/jsx-runtime");
+    Toaster = (_a) => {
+      var props = __objRest(_a, []);
+      const { theme = "system" } = (0, import_next_themes.useTheme)();
+      return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+        import_sonner.Toaster,
+        __spreadValues({
+          theme,
+          className: "toaster group",
+          style: {
+            "--normal-bg": "var(--popover)",
+            "--normal-text": "var(--popover-foreground)",
+            "--normal-border": "var(--border)"
+          }
+        }, props)
+      );
+    };
+  }
+});
 
 // src/index.ts
 var index_exports = {};
@@ -341,26 +376,11 @@ var StatusBadge = ({ status }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Badge, { className: `${color} text-white capitalize`, children: status });
 };
 
-// src/components/ui/sonner.tsx
-var import_next_themes = require("next-themes");
-var import_sonner = require("sonner");
-var import_jsx_runtime8 = require("react/jsx-runtime");
-var Toaster = (_a) => {
-  var props = __objRest(_a, []);
-  const { theme = "system" } = (0, import_next_themes.useTheme)();
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-    import_sonner.Toaster,
-    __spreadValues({
-      theme,
-      className: "toaster group",
-      style: {
-        "--normal-bg": "var(--popover)",
-        "--normal-text": "var(--popover-foreground)",
-        "--normal-border": "var(--border)"
-      }
-    }, props)
-  );
-};
+// src/index.ts
+init_sonner();
+
+// src/components/layout/dashboardShell.tsx
+var React2 = __toESM(require("react"));
 
 // src/components/layout/sidebar.tsx
 var import_lucide_react = require("lucide-react");
@@ -396,19 +416,34 @@ var Topbar = () => {
 
 // src/components/layout/dashboardShell.tsx
 var import_jsx_runtime11 = require("react/jsx-runtime");
+var ToasterProvider = ({ children }) => {
+  const [isMounted, setIsMounted] = React2.useState(false);
+  React2.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) {
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_jsx_runtime11.Fragment, { children });
+  }
+  const { Toaster: Toaster2 } = (init_sonner(), __toCommonJS(sonner_exports));
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
+    children,
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Toaster2, {})
+  ] });
+};
 var DashboardShell = ({
   children,
   sidebar,
-  topbar
+  topbar,
+  showToaster = true
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex h-screen w-full", children: [
+  const content = /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex h-screen w-full", children: [
     sidebar != null ? sidebar : /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Sidebar, {}),
     /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex flex-col flex-1", children: [
       topbar != null ? topbar : /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Topbar, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("main", { className: "flex-1 overflow-y-auto bg-muted p-4", children }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Toaster, {})
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("main", { className: "flex-1 overflow-y-auto bg-muted p-4", children })
     ] })
   ] });
+  return showToaster ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ToasterProvider, { children: content }) : content;
 };
 
 // src/components/theme-provider.tsx

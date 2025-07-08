@@ -38,10 +38,11 @@ declare const StatusBadge: ({ status }: {
 
 declare const Toaster: ({ ...props }: ToasterProps) => react_jsx_runtime.JSX.Element;
 
-declare const DashboardShell: ({ children, sidebar, topbar, }: {
+declare const DashboardShell: ({ children, sidebar, topbar, showToaster, }: {
     children: React.ReactNode;
     sidebar?: React.ReactNode;
     topbar?: React.ReactNode;
+    showToaster?: boolean;
 }) => react_jsx_runtime.JSX.Element;
 
 declare const Sidebar: () => react_jsx_runtime.JSX.Element;

@@ -1,6 +1,8 @@
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -29,6 +31,54 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/components/ui/sonner.tsx
+var sonner_exports = {};
+__export(sonner_exports, {
+  Toaster: () => Toaster
+});
+import { useTheme } from "next-themes";
+import { Toaster as Sonner } from "sonner";
+import { jsx as jsx8 } from "react/jsx-runtime";
+var Toaster;
+var init_sonner = __esm({
+  "src/components/ui/sonner.tsx"() {
+    "use strict";
+    "use client";
+    Toaster = (_a) => {
+      var props = __objRest(_a, []);
+      const { theme = "system" } = useTheme();
+      return /* @__PURE__ */ jsx8(
+        Sonner,
+        __spreadValues({
+          theme,
+          className: "toaster group",
+          style: {
+            "--normal-bg": "var(--popover)",
+            "--normal-text": "var(--popover-foreground)",
+            "--normal-border": "var(--border)"
+          }
+        }, props)
+      );
+    };
+  }
+});
 
 // src/lib/utils.ts
 import { clsx } from "clsx";
@@ -291,26 +341,11 @@ var StatusBadge = ({ status }) => {
   return /* @__PURE__ */ jsx7(Badge, { className: `${color} text-white capitalize`, children: status });
 };
 
-// src/components/ui/sonner.tsx
-import { useTheme } from "next-themes";
-import { Toaster as Sonner } from "sonner";
-import { jsx as jsx8 } from "react/jsx-runtime";
-var Toaster = (_a) => {
-  var props = __objRest(_a, []);
-  const { theme = "system" } = useTheme();
-  return /* @__PURE__ */ jsx8(
-    Sonner,
-    __spreadValues({
-      theme,
-      className: "toaster group",
-      style: {
-        "--normal-bg": "var(--popover)",
-        "--normal-text": "var(--popover-foreground)",
-        "--normal-border": "var(--border)"
-      }
-    }, props)
-  );
-};
+// src/index.ts
+init_sonner();
+
+// src/components/layout/dashboardShell.tsx
+import * as React2 from "react";
 
 // src/components/layout/sidebar.tsx
 import { Home, Settings, BarChart3 } from "lucide-react";
@@ -345,20 +380,35 @@ var Topbar = () => {
 };
 
 // src/components/layout/dashboardShell.tsx
-import { jsx as jsx11, jsxs as jsxs5 } from "react/jsx-runtime";
+import { Fragment, jsx as jsx11, jsxs as jsxs5 } from "react/jsx-runtime";
+var ToasterProvider = ({ children }) => {
+  const [isMounted, setIsMounted] = React2.useState(false);
+  React2.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) {
+    return /* @__PURE__ */ jsx11(Fragment, { children });
+  }
+  const { Toaster: Toaster2 } = (init_sonner(), __toCommonJS(sonner_exports));
+  return /* @__PURE__ */ jsxs5(Fragment, { children: [
+    children,
+    /* @__PURE__ */ jsx11(Toaster2, {})
+  ] });
+};
 var DashboardShell = ({
   children,
   sidebar,
-  topbar
+  topbar,
+  showToaster = true
 }) => {
-  return /* @__PURE__ */ jsxs5("div", { className: "flex h-screen w-full", children: [
+  const content = /* @__PURE__ */ jsxs5("div", { className: "flex h-screen w-full", children: [
     sidebar != null ? sidebar : /* @__PURE__ */ jsx11(Sidebar, {}),
     /* @__PURE__ */ jsxs5("div", { className: "flex flex-col flex-1", children: [
       topbar != null ? topbar : /* @__PURE__ */ jsx11(Topbar, {}),
-      /* @__PURE__ */ jsx11("main", { className: "flex-1 overflow-y-auto bg-muted p-4", children }),
-      /* @__PURE__ */ jsx11(Toaster, {})
+      /* @__PURE__ */ jsx11("main", { className: "flex-1 overflow-y-auto bg-muted p-4", children })
     ] })
   ] });
+  return showToaster ? /* @__PURE__ */ jsx11(ToasterProvider, { children: content }) : content;
 };
 
 // src/components/theme-provider.tsx
