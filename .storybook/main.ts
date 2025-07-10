@@ -1,4 +1,7 @@
+// .storybook/main.ts
 import type { StorybookConfig } from "@storybook/nextjs-vite";
+import { mergeConfig } from 'vite'; // Import mergeConfig
+import path from 'path'; // Import path
 
 const config: StorybookConfig = {
   "stories": [
@@ -9,7 +12,7 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
-    "@storybook/addon-vitest"
+    "@storybook/addon-vitest",
   ],
   "framework": {
     "name": "@storybook/nextjs-vite",
@@ -17,6 +20,16 @@ const config: StorybookConfig = {
   },
   "staticDirs": [
     "../public"
-  ]
+  ],
+  // Add this viteFinal function to ensure path aliases work
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, '../src'),
+        },
+      },
+    });
+  },
 };
 export default config;
