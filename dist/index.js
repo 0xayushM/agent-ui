@@ -1,9 +1,7 @@
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
@@ -21,7 +19,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -64,18 +61,17 @@ var sonner_exports = {};
 __export(sonner_exports, {
   Toaster: () => Toaster
 });
-var import_next_themes, import_sonner, import_jsx_runtime8, Toaster;
+var import_next_themes, import_sonner, Toaster;
 var init_sonner = __esm({
   "src/components/ui/sonner.tsx"() {
     "use strict";
     "use client";
     import_next_themes = require("next-themes");
     import_sonner = require("sonner");
-    import_jsx_runtime8 = require("react/jsx-runtime");
     Toaster = (_a) => {
       var props = __objRest(_a, []);
       const { theme = "system" } = (0, import_next_themes.useTheme)();
-      return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+      return /* @__PURE__ */ React.createElement(
         import_sonner.Toaster,
         __spreadValues({
           theme,
@@ -115,6 +111,12 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
+// src/components/ui/agentCard.tsx
+var React3 = __toESM(require("react"));
+
+// src/components/ui/card.tsx
+var React2 = __toESM(require("react"));
+
 // src/lib/utils.ts
 var import_clsx = require("clsx");
 var import_tailwind_merge = require("tailwind-merge");
@@ -123,10 +125,9 @@ function cn(...inputs) {
 }
 
 // src/components/ui/card.tsx
-var import_jsx_runtime = require("react/jsx-runtime");
 function Card(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card",
@@ -139,7 +140,7 @@ function Card(_a) {
 }
 function CardHeader(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-header",
@@ -152,7 +153,7 @@ function CardHeader(_a) {
 }
 function CardTitle(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-title",
@@ -162,7 +163,7 @@ function CardTitle(_a) {
 }
 function CardDescription(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-description",
@@ -172,7 +173,7 @@ function CardDescription(_a) {
 }
 function CardAction(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-action",
@@ -185,7 +186,7 @@ function CardAction(_a) {
 }
 function CardContent(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-content",
@@ -195,7 +196,7 @@ function CardContent(_a) {
 }
 function CardFooter(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-footer",
@@ -205,7 +206,6 @@ function CardFooter(_a) {
 }
 
 // src/components/ui/agentCard.tsx
-var import_jsx_runtime2 = require("react/jsx-runtime");
 var AgentCard = ({
   name,
   description,
@@ -213,22 +213,13 @@ var AgentCard = ({
   children
 }) => {
   const statusColor = status === "active" ? "text-green-500" : status === "error" ? "text-red-500" : "text-muted-foreground";
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Card, { className: "w-full shadow-sm border", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(CardHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(CardTitle, { className: "flex justify-between items-center", children: [
-        name,
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: `text-sm font-medium ${statusColor}`, children: status })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("p", { className: "text-sm text-muted-foreground", children: description })
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CardContent, { children })
-  ] });
+  return /* @__PURE__ */ React3.createElement(Card, { className: "w-full shadow-sm border" }, /* @__PURE__ */ React3.createElement(CardHeader, null, /* @__PURE__ */ React3.createElement(CardTitle, { className: "flex justify-between items-center" }, name, /* @__PURE__ */ React3.createElement("span", { className: `text-sm font-medium ${statusColor}` }, status)), /* @__PURE__ */ React3.createElement("p", { className: "text-sm text-muted-foreground" }, description)), /* @__PURE__ */ React3.createElement(CardContent, null, children));
 };
 
 // src/components/ui/button.tsx
+var React4 = __toESM(require("react"));
 var import_react_slot = require("@radix-ui/react-slot");
 var import_class_variance_authority = require("class-variance-authority");
-var import_jsx_runtime3 = require("react/jsx-runtime");
 var buttonVariants = (0, import_class_variance_authority.cva)(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -267,7 +258,7 @@ function Button(_a) {
     "asChild"
   ]);
   const Comp = asChild ? import_react_slot.Slot : "button";
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+  return /* @__PURE__ */ React4.createElement(
     Comp,
     __spreadValues({
       "data-slot": "button",
@@ -277,13 +268,13 @@ function Button(_a) {
 }
 
 // src/components/ui/promptForm.tsx
-var React = __toESM(require("react"));
+var React6 = __toESM(require("react"));
 
 // src/components/ui/input.tsx
-var import_jsx_runtime4 = require("react/jsx-runtime");
+var React5 = __toESM(require("react"));
 function Input(_a) {
   var _b = _a, { className, type } = _b, props = __objRest(_b, ["className", "type"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+  return /* @__PURE__ */ React5.createElement(
     "input",
     __spreadValues({
       type,
@@ -299,36 +290,36 @@ function Input(_a) {
 }
 
 // src/components/ui/promptForm.tsx
-var import_jsx_runtime5 = require("react/jsx-runtime");
 var PromptForm = ({ onSubmit }) => {
-  const [prompt, setPrompt] = React.useState("");
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+  const [prompt, setPrompt] = React6.useState("");
+  return /* @__PURE__ */ React6.createElement(
     "form",
     {
       onSubmit: (e) => {
         e.preventDefault();
         onSubmit(prompt);
       },
-      className: "flex gap-2",
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-          Input,
-          {
-            placeholder: "Ask the agent...",
-            value: prompt,
-            onChange: (e) => setPrompt(e.target.value)
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Button, { type: "submit", children: "Run" })
-      ]
-    }
+      className: "flex gap-2"
+    },
+    /* @__PURE__ */ React6.createElement(
+      Input,
+      {
+        placeholder: "Ask the agent...",
+        value: prompt,
+        onChange: (e) => setPrompt(e.target.value)
+      }
+    ),
+    /* @__PURE__ */ React6.createElement(Button, { type: "submit" }, "Run")
   );
 };
 
+// src/components/ui/statusBadge.tsx
+var React8 = __toESM(require("react"));
+
 // src/components/ui/badge.tsx
+var React7 = __toESM(require("react"));
 var import_react_slot2 = require("@radix-ui/react-slot");
 var import_class_variance_authority2 = require("class-variance-authority");
-var import_jsx_runtime6 = require("react/jsx-runtime");
 var badgeVariants = (0, import_class_variance_authority2.cva)(
   "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
   {
@@ -356,7 +347,7 @@ function Badge(_a) {
     "asChild"
   ]);
   const Comp = asChild ? import_react_slot2.Slot : "span";
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+  return /* @__PURE__ */ React7.createElement(
     Comp,
     __spreadValues({
       "data-slot": "badge",
@@ -366,69 +357,43 @@ function Badge(_a) {
 }
 
 // src/components/ui/statusBadge.tsx
-var import_jsx_runtime7 = require("react/jsx-runtime");
 var StatusBadge = ({ status }) => {
   const color = {
     success: "bg-green-500",
     pending: "bg-yellow-500",
     error: "bg-red-500"
   }[status];
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Badge, { className: `${color} text-white capitalize`, children: status });
+  return /* @__PURE__ */ React8.createElement(Badge, { className: `${color} text-white capitalize` }, status);
 };
 
 // src/index.ts
 init_sonner();
 
 // src/components/layout/dashboardShell.tsx
-var React2 = __toESM(require("react"));
+var React9 = __toESM(require("react"));
 
 // src/components/layout/sidebar.tsx
 var import_lucide_react = require("lucide-react");
-var import_jsx_runtime9 = require("react/jsx-runtime");
 var Sidebar = () => {
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("aside", { className: "w-64 bg-background border-r p-4 hidden md:block", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "text-lg font-bold mb-6", children: "AgentUI" }),
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("nav", { className: "space-y-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_lucide_react.Home, { className: "h-4 w-4" }),
-        " Dashboard"
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_lucide_react.BarChart3, { className: "h-4 w-4" }),
-        " Analytics"
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_lucide_react.Settings, { className: "h-4 w-4" }),
-        " Settings"
-      ] })
-    ] })
-  ] });
+  return /* @__PURE__ */ React.createElement("aside", { className: "w-64 bg-background border-r p-4 hidden md:block" }, /* @__PURE__ */ React.createElement("div", { className: "text-lg font-bold mb-6" }, "AgentUI"), /* @__PURE__ */ React.createElement("nav", { className: "space-y-3" }, /* @__PURE__ */ React.createElement("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground" }, /* @__PURE__ */ React.createElement(import_lucide_react.Home, { className: "h-4 w-4" }), " Dashboard"), /* @__PURE__ */ React.createElement("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground" }, /* @__PURE__ */ React.createElement(import_lucide_react.BarChart3, { className: "h-4 w-4" }), " Analytics"), /* @__PURE__ */ React.createElement("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground" }, /* @__PURE__ */ React.createElement(import_lucide_react.Settings, { className: "h-4 w-4" }), " Settings")));
 };
 
 // src/components/layout/topbar.tsx
-var import_jsx_runtime10 = require("react/jsx-runtime");
 var Topbar = () => {
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("header", { className: "h-14 border-b bg-background flex items-center px-4 justify-between", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h1", { className: "text-lg font-semibold", children: "Agent Dashboard" }),
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "text-sm text-muted-foreground", children: "Welcome, Ayush" })
-  ] });
+  return /* @__PURE__ */ React.createElement("header", { className: "h-14 border-b bg-background flex items-center px-4 justify-between" }, /* @__PURE__ */ React.createElement("h1", { className: "text-lg font-semibold" }, "Agent Dashboard"), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-muted-foreground" }, "Welcome, Ayush"));
 };
 
 // src/components/layout/dashboardShell.tsx
-var import_jsx_runtime11 = require("react/jsx-runtime");
 var ToasterProvider = ({ children }) => {
-  const [isMounted, setIsMounted] = React2.useState(false);
-  React2.useEffect(() => {
+  const [isMounted, setIsMounted] = React9.useState(false);
+  React9.useEffect(() => {
     setIsMounted(true);
   }, []);
   if (!isMounted) {
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_jsx_runtime11.Fragment, { children });
+    return /* @__PURE__ */ React9.createElement(React9.Fragment, null, children);
   }
   const { Toaster: Toaster2 } = (init_sonner(), __toCommonJS(sonner_exports));
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
-    children,
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Toaster2, {})
-  ] });
+  return /* @__PURE__ */ React9.createElement(React9.Fragment, null, children, /* @__PURE__ */ React9.createElement(Toaster2, null));
 };
 var DashboardShell = ({
   children,
@@ -436,22 +401,16 @@ var DashboardShell = ({
   topbar,
   showToaster = true
 }) => {
-  const content = /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex h-screen w-full", children: [
-    sidebar != null ? sidebar : /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Sidebar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex flex-col flex-1", children: [
-      topbar != null ? topbar : /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Topbar, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("main", { className: "flex-1 overflow-y-auto bg-muted p-4", children })
-    ] })
-  ] });
-  return showToaster ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ToasterProvider, { children: content }) : content;
+  const content = /* @__PURE__ */ React9.createElement("div", { className: "flex h-screen w-full" }, sidebar != null ? sidebar : /* @__PURE__ */ React9.createElement(Sidebar, null), /* @__PURE__ */ React9.createElement("div", { className: "flex flex-col flex-1" }, topbar != null ? topbar : /* @__PURE__ */ React9.createElement(Topbar, null), /* @__PURE__ */ React9.createElement("main", { className: "flex-1 overflow-y-auto bg-muted p-4" }, children)));
+  return showToaster ? /* @__PURE__ */ React9.createElement(ToasterProvider, null, content) : content;
 };
 
 // src/components/theme-provider.tsx
+var React10 = __toESM(require("react"));
 var import_next_themes2 = require("next-themes");
-var import_jsx_runtime12 = require("react/jsx-runtime");
 function ThemeProvider(_a) {
   var _b = _a, { children } = _b, props = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_next_themes2.ThemeProvider, __spreadProps(__spreadValues({}, props), { children }));
+  return /* @__PURE__ */ React10.createElement(import_next_themes2.ThemeProvider, __spreadValues({}, props), children);
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

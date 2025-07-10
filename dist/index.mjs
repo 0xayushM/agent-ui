@@ -1,7 +1,5 @@
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
@@ -18,7 +16,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -55,7 +52,6 @@ __export(sonner_exports, {
 });
 import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "sonner";
-import { jsx as jsx8 } from "react/jsx-runtime";
 var Toaster;
 var init_sonner = __esm({
   "src/components/ui/sonner.tsx"() {
@@ -64,7 +60,7 @@ var init_sonner = __esm({
     Toaster = (_a) => {
       var props = __objRest(_a, []);
       const { theme = "system" } = useTheme();
-      return /* @__PURE__ */ jsx8(
+      return /* @__PURE__ */ React.createElement(
         Sonner,
         __spreadValues({
           theme,
@@ -80,6 +76,12 @@ var init_sonner = __esm({
   }
 });
 
+// src/components/ui/agentCard.tsx
+import * as React3 from "react";
+
+// src/components/ui/card.tsx
+import * as React2 from "react";
+
 // src/lib/utils.ts
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -88,10 +90,9 @@ function cn(...inputs) {
 }
 
 // src/components/ui/card.tsx
-import { jsx } from "react/jsx-runtime";
 function Card(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card",
@@ -104,7 +105,7 @@ function Card(_a) {
 }
 function CardHeader(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-header",
@@ -117,7 +118,7 @@ function CardHeader(_a) {
 }
 function CardTitle(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-title",
@@ -127,7 +128,7 @@ function CardTitle(_a) {
 }
 function CardDescription(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-description",
@@ -137,7 +138,7 @@ function CardDescription(_a) {
 }
 function CardAction(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-action",
@@ -150,7 +151,7 @@ function CardAction(_a) {
 }
 function CardContent(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-content",
@@ -160,7 +161,7 @@ function CardContent(_a) {
 }
 function CardFooter(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ React2.createElement(
     "div",
     __spreadValues({
       "data-slot": "card-footer",
@@ -170,7 +171,6 @@ function CardFooter(_a) {
 }
 
 // src/components/ui/agentCard.tsx
-import { jsx as jsx2, jsxs } from "react/jsx-runtime";
 var AgentCard = ({
   name,
   description,
@@ -178,22 +178,13 @@ var AgentCard = ({
   children
 }) => {
   const statusColor = status === "active" ? "text-green-500" : status === "error" ? "text-red-500" : "text-muted-foreground";
-  return /* @__PURE__ */ jsxs(Card, { className: "w-full shadow-sm border", children: [
-    /* @__PURE__ */ jsxs(CardHeader, { children: [
-      /* @__PURE__ */ jsxs(CardTitle, { className: "flex justify-between items-center", children: [
-        name,
-        /* @__PURE__ */ jsx2("span", { className: `text-sm font-medium ${statusColor}`, children: status })
-      ] }),
-      /* @__PURE__ */ jsx2("p", { className: "text-sm text-muted-foreground", children: description })
-    ] }),
-    /* @__PURE__ */ jsx2(CardContent, { children })
-  ] });
+  return /* @__PURE__ */ React3.createElement(Card, { className: "w-full shadow-sm border" }, /* @__PURE__ */ React3.createElement(CardHeader, null, /* @__PURE__ */ React3.createElement(CardTitle, { className: "flex justify-between items-center" }, name, /* @__PURE__ */ React3.createElement("span", { className: `text-sm font-medium ${statusColor}` }, status)), /* @__PURE__ */ React3.createElement("p", { className: "text-sm text-muted-foreground" }, description)), /* @__PURE__ */ React3.createElement(CardContent, null, children));
 };
 
 // src/components/ui/button.tsx
+import * as React4 from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
-import { jsx as jsx3 } from "react/jsx-runtime";
 var buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -232,7 +223,7 @@ function Button(_a) {
     "asChild"
   ]);
   const Comp = asChild ? Slot : "button";
-  return /* @__PURE__ */ jsx3(
+  return /* @__PURE__ */ React4.createElement(
     Comp,
     __spreadValues({
       "data-slot": "button",
@@ -242,13 +233,13 @@ function Button(_a) {
 }
 
 // src/components/ui/promptForm.tsx
-import * as React from "react";
+import * as React6 from "react";
 
 // src/components/ui/input.tsx
-import { jsx as jsx4 } from "react/jsx-runtime";
+import * as React5 from "react";
 function Input(_a) {
   var _b = _a, { className, type } = _b, props = __objRest(_b, ["className", "type"]);
-  return /* @__PURE__ */ jsx4(
+  return /* @__PURE__ */ React5.createElement(
     "input",
     __spreadValues({
       type,
@@ -264,36 +255,36 @@ function Input(_a) {
 }
 
 // src/components/ui/promptForm.tsx
-import { jsx as jsx5, jsxs as jsxs2 } from "react/jsx-runtime";
 var PromptForm = ({ onSubmit }) => {
-  const [prompt, setPrompt] = React.useState("");
-  return /* @__PURE__ */ jsxs2(
+  const [prompt, setPrompt] = React6.useState("");
+  return /* @__PURE__ */ React6.createElement(
     "form",
     {
       onSubmit: (e) => {
         e.preventDefault();
         onSubmit(prompt);
       },
-      className: "flex gap-2",
-      children: [
-        /* @__PURE__ */ jsx5(
-          Input,
-          {
-            placeholder: "Ask the agent...",
-            value: prompt,
-            onChange: (e) => setPrompt(e.target.value)
-          }
-        ),
-        /* @__PURE__ */ jsx5(Button, { type: "submit", children: "Run" })
-      ]
-    }
+      className: "flex gap-2"
+    },
+    /* @__PURE__ */ React6.createElement(
+      Input,
+      {
+        placeholder: "Ask the agent...",
+        value: prompt,
+        onChange: (e) => setPrompt(e.target.value)
+      }
+    ),
+    /* @__PURE__ */ React6.createElement(Button, { type: "submit" }, "Run")
   );
 };
 
+// src/components/ui/statusBadge.tsx
+import * as React8 from "react";
+
 // src/components/ui/badge.tsx
+import * as React7 from "react";
 import { Slot as Slot2 } from "@radix-ui/react-slot";
 import { cva as cva2 } from "class-variance-authority";
-import { jsx as jsx6 } from "react/jsx-runtime";
 var badgeVariants = cva2(
   "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
   {
@@ -321,7 +312,7 @@ function Badge(_a) {
     "asChild"
   ]);
   const Comp = asChild ? Slot2 : "span";
-  return /* @__PURE__ */ jsx6(
+  return /* @__PURE__ */ React7.createElement(
     Comp,
     __spreadValues({
       "data-slot": "badge",
@@ -331,69 +322,43 @@ function Badge(_a) {
 }
 
 // src/components/ui/statusBadge.tsx
-import { jsx as jsx7 } from "react/jsx-runtime";
 var StatusBadge = ({ status }) => {
   const color = {
     success: "bg-green-500",
     pending: "bg-yellow-500",
     error: "bg-red-500"
   }[status];
-  return /* @__PURE__ */ jsx7(Badge, { className: `${color} text-white capitalize`, children: status });
+  return /* @__PURE__ */ React8.createElement(Badge, { className: `${color} text-white capitalize` }, status);
 };
 
 // src/index.ts
 init_sonner();
 
 // src/components/layout/dashboardShell.tsx
-import * as React2 from "react";
+import * as React9 from "react";
 
 // src/components/layout/sidebar.tsx
 import { Home, Settings, BarChart3 } from "lucide-react";
-import { jsx as jsx9, jsxs as jsxs3 } from "react/jsx-runtime";
 var Sidebar = () => {
-  return /* @__PURE__ */ jsxs3("aside", { className: "w-64 bg-background border-r p-4 hidden md:block", children: [
-    /* @__PURE__ */ jsx9("div", { className: "text-lg font-bold mb-6", children: "AgentUI" }),
-    /* @__PURE__ */ jsxs3("nav", { className: "space-y-3", children: [
-      /* @__PURE__ */ jsxs3("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground", children: [
-        /* @__PURE__ */ jsx9(Home, { className: "h-4 w-4" }),
-        " Dashboard"
-      ] }),
-      /* @__PURE__ */ jsxs3("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground", children: [
-        /* @__PURE__ */ jsx9(BarChart3, { className: "h-4 w-4" }),
-        " Analytics"
-      ] }),
-      /* @__PURE__ */ jsxs3("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground", children: [
-        /* @__PURE__ */ jsx9(Settings, { className: "h-4 w-4" }),
-        " Settings"
-      ] })
-    ] })
-  ] });
+  return /* @__PURE__ */ React.createElement("aside", { className: "w-64 bg-background border-r p-4 hidden md:block" }, /* @__PURE__ */ React.createElement("div", { className: "text-lg font-bold mb-6" }, "AgentUI"), /* @__PURE__ */ React.createElement("nav", { className: "space-y-3" }, /* @__PURE__ */ React.createElement("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground" }, /* @__PURE__ */ React.createElement(Home, { className: "h-4 w-4" }), " Dashboard"), /* @__PURE__ */ React.createElement("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground" }, /* @__PURE__ */ React.createElement(BarChart3, { className: "h-4 w-4" }), " Analytics"), /* @__PURE__ */ React.createElement("a", { href: "#", className: "flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground" }, /* @__PURE__ */ React.createElement(Settings, { className: "h-4 w-4" }), " Settings")));
 };
 
 // src/components/layout/topbar.tsx
-import { jsx as jsx10, jsxs as jsxs4 } from "react/jsx-runtime";
 var Topbar = () => {
-  return /* @__PURE__ */ jsxs4("header", { className: "h-14 border-b bg-background flex items-center px-4 justify-between", children: [
-    /* @__PURE__ */ jsx10("h1", { className: "text-lg font-semibold", children: "Agent Dashboard" }),
-    /* @__PURE__ */ jsx10("div", { className: "text-sm text-muted-foreground", children: "Welcome, Ayush" })
-  ] });
+  return /* @__PURE__ */ React.createElement("header", { className: "h-14 border-b bg-background flex items-center px-4 justify-between" }, /* @__PURE__ */ React.createElement("h1", { className: "text-lg font-semibold" }, "Agent Dashboard"), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-muted-foreground" }, "Welcome, Ayush"));
 };
 
 // src/components/layout/dashboardShell.tsx
-import { Fragment, jsx as jsx11, jsxs as jsxs5 } from "react/jsx-runtime";
 var ToasterProvider = ({ children }) => {
-  const [isMounted, setIsMounted] = React2.useState(false);
-  React2.useEffect(() => {
+  const [isMounted, setIsMounted] = React9.useState(false);
+  React9.useEffect(() => {
     setIsMounted(true);
   }, []);
   if (!isMounted) {
-    return /* @__PURE__ */ jsx11(Fragment, { children });
+    return /* @__PURE__ */ React9.createElement(React9.Fragment, null, children);
   }
   const { Toaster: Toaster2 } = (init_sonner(), __toCommonJS(sonner_exports));
-  return /* @__PURE__ */ jsxs5(Fragment, { children: [
-    children,
-    /* @__PURE__ */ jsx11(Toaster2, {})
-  ] });
+  return /* @__PURE__ */ React9.createElement(React9.Fragment, null, children, /* @__PURE__ */ React9.createElement(Toaster2, null));
 };
 var DashboardShell = ({
   children,
@@ -401,22 +366,16 @@ var DashboardShell = ({
   topbar,
   showToaster = true
 }) => {
-  const content = /* @__PURE__ */ jsxs5("div", { className: "flex h-screen w-full", children: [
-    sidebar != null ? sidebar : /* @__PURE__ */ jsx11(Sidebar, {}),
-    /* @__PURE__ */ jsxs5("div", { className: "flex flex-col flex-1", children: [
-      topbar != null ? topbar : /* @__PURE__ */ jsx11(Topbar, {}),
-      /* @__PURE__ */ jsx11("main", { className: "flex-1 overflow-y-auto bg-muted p-4", children })
-    ] })
-  ] });
-  return showToaster ? /* @__PURE__ */ jsx11(ToasterProvider, { children: content }) : content;
+  const content = /* @__PURE__ */ React9.createElement("div", { className: "flex h-screen w-full" }, sidebar != null ? sidebar : /* @__PURE__ */ React9.createElement(Sidebar, null), /* @__PURE__ */ React9.createElement("div", { className: "flex flex-col flex-1" }, topbar != null ? topbar : /* @__PURE__ */ React9.createElement(Topbar, null), /* @__PURE__ */ React9.createElement("main", { className: "flex-1 overflow-y-auto bg-muted p-4" }, children)));
+  return showToaster ? /* @__PURE__ */ React9.createElement(ToasterProvider, null, content) : content;
 };
 
 // src/components/theme-provider.tsx
+import * as React10 from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { jsx as jsx12 } from "react/jsx-runtime";
 function ThemeProvider(_a) {
   var _b = _a, { children } = _b, props = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ jsx12(NextThemesProvider, __spreadProps(__spreadValues({}, props), { children }));
+  return /* @__PURE__ */ React10.createElement(NextThemesProvider, __spreadValues({}, props), children);
 }
 export {
   AgentCard,
