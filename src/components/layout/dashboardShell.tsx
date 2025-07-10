@@ -1,57 +1,52 @@
-"use client"
-import * as React from "react"
-import { Sidebar } from "./sidebar"
-import { Topbar } from "./topbar"
+"use client";
 
-// Import Toaster dynamically to avoid server-side rendering issues
-const ToasterProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isMounted, setIsMounted] = React.useState(false)
+import { useState } from "react";
+import { Sidebar, NavItem } from "./sidebar";
+import { Header } from "./header";
+import { Button } from "../ui/button";
+import { PlusCircle } from "lucide-react";
 
-  React.useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  if (!isMounted) {
-    return <>{children}</>
-  }
-
-  // Dynamically import the Toaster only on the client side
-  const { Toaster } = require("@/components/ui/sonner")
-  
-  return (
-    <>
-      {children}
-      <Toaster />
-    </>
-  )
+interface User {
+  name: string;
+  email: string;
+  avatarUrl?: string;
 }
 
-export const DashboardShell = ({
-  children,
-  sidebar,
-  topbar,
-  showToaster = true,
-}: {
-  children: React.ReactNode
-  sidebar?: React.ReactNode
-  topbar?: React.ReactNode
-  showToaster?: boolean
-}) => {
-  const content = (
-    <div className="flex h-screen w-full">
-      {/* Sidebar */}
-      {sidebar ?? <Sidebar />}
+interface DashboardShellProps {
+  sidebarNavItems: NavItem[];
+  user: User;
+  children: React.ReactNode;
+}
 
-      {/* Main Area */}
-      <div className="flex flex-col flex-1">
-        {topbar ?? <Topbar />}
-        <main className="flex-1 overflow-y-auto bg-muted p-4">
-          {children}
-        </main>
+export function DashboardShell({
+  sidebarNavItems,
+  user,
+  children,
+}: DashboardShellProps) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  return (
+    <div className="flex min-h-screen w-full bg-muted/40">
+      <Sidebar
+        navItems={sidebarNavItems}
+        isCollapsed={isCollapsed}
+        onCollapseToggle={toggleSidebar}
+      />
+      <div className="flex flex-1 flex-col">
+        <Header user={user}>
+          <Button size="sm" className="gap-1">
+            <PlusCircle className="size-3.5" />
+            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+              New Agent
+            </span>
+          </Button>
+        </Header>
+        <main className="flex-1 p-4 sm:p-6">{children}</main>
       </div>
     </div>
-  )
-
-  // Wrap with ToasterProvider only if showToaster is true
-  return showToaster ? <ToasterProvider>{content}</ToasterProvider> : content
+  );
 }

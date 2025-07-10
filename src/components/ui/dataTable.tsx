@@ -24,10 +24,9 @@ interface DataTableProps<TData, TValue> {
   isLoading?: boolean;
 }
 
-// THE FIX IS HERE 👇
 export function DataTable<TData, TValue>({
-  columns = [], // Add default empty array
-  data = [],     // Add default empty array
+  columns = [],
+  data = [],
   isLoading = false,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
@@ -36,8 +35,7 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
   });
 
-  // This logic is now safe because 'columns' is guaranteed to be an array.
-  const columnCount = columns.length > 0 ? columns.length : 5; // Fallback for skeleton
+  const columnCount = columns.length > 0 ? columns.length : 5;
   const loadingRows = Array(5).fill(0);
 
   return (
@@ -65,7 +63,7 @@ export function DataTable<TData, TValue>({
           {isLoading ? (
             loadingRows.map((_, i) => (
               <TableRow key={i}>
-                {Array(columnCount).fill(0).map((_, j) => ( // Use columnCount for safety
+                {Array(columnCount).fill(0).map((_, j) => (
                   <TableCell key={j}>
                     <Skeleton className="h-6 w-full" />
                   </TableCell>
