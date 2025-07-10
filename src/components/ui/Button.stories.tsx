@@ -162,3 +162,17 @@ export const AsChild: Story = {
     }
   }
 };
+
+export const Loading: Story = {
+  args: {
+    isLoading: true,
+    children: "Processing",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'When `isLoading` is true, the button is disabled and shows a spinner. The original children are still rendered.'
+      }
+    }
+  }
+};
