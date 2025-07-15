@@ -1,14 +1,16 @@
-// tsconfig.build.json
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-      "noEmit": false,
-      "declaration": true,
-      "emitDeclarationOnly": true,
-      "declarationMap": false,
-      "outDir": "dist",
-      "incremental": false
-    },
-    "include": ["src"]
-  }
-  
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // The only necessary override is to disable incremental builds.
+    "incremental": false
+  },
+  // Explicitly tell tsc what to include for the build.
+  // This is a best practice to avoid including stories and tests.
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.stories.tsx",
+    "**/*.test.tsx"
+  ]
+}

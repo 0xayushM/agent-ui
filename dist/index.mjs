@@ -30,12 +30,6 @@ var __objRest = (source, exclude) => {
   return target;
 };
 
-// src/components/ui/agentCard.tsx
-import * as React3 from "react";
-
-// src/components/ui/card.tsx
-import * as React2 from "react";
-
 // src/lib/utils.ts
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -44,9 +38,10 @@ function cn(...inputs) {
 }
 
 // src/components/ui/card.tsx
+import { jsx } from "react/jsx-runtime";
 function Card(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsx(
     "div",
     __spreadValues({
       "data-slot": "card",
@@ -59,7 +54,7 @@ function Card(_a) {
 }
 function CardHeader(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsx(
     "div",
     __spreadValues({
       "data-slot": "card-header",
@@ -72,7 +67,7 @@ function CardHeader(_a) {
 }
 function CardTitle(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsx(
     "div",
     __spreadValues({
       "data-slot": "card-title",
@@ -82,7 +77,7 @@ function CardTitle(_a) {
 }
 function CardDescription(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsx(
     "div",
     __spreadValues({
       "data-slot": "card-description",
@@ -92,7 +87,7 @@ function CardDescription(_a) {
 }
 function CardAction(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsx(
     "div",
     __spreadValues({
       "data-slot": "card-action",
@@ -105,7 +100,7 @@ function CardAction(_a) {
 }
 function CardContent(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsx(
     "div",
     __spreadValues({
       "data-slot": "card-content",
@@ -115,7 +110,7 @@ function CardContent(_a) {
 }
 function CardFooter(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsx(
     "div",
     __spreadValues({
       "data-slot": "card-footer",
@@ -125,6 +120,7 @@ function CardFooter(_a) {
 }
 
 // src/components/ui/agentCard.tsx
+import { jsx as jsx2, jsxs } from "react/jsx-runtime";
 var AgentCard = ({
   name,
   description,
@@ -132,17 +128,27 @@ var AgentCard = ({
   children
 }) => {
   const statusColor = status === "active" ? "text-green-500" : status === "error" ? "text-red-500" : "text-muted-foreground";
-  return /* @__PURE__ */ React3.createElement(Card, { className: "w-full shadow-sm border" }, /* @__PURE__ */ React3.createElement(CardHeader, null, /* @__PURE__ */ React3.createElement(CardTitle, { className: "flex justify-between items-center" }, name, /* @__PURE__ */ React3.createElement("span", { className: `text-sm font-medium ${statusColor}` }, status)), /* @__PURE__ */ React3.createElement("p", { className: "text-sm text-muted-foreground" }, description)), /* @__PURE__ */ React3.createElement(CardContent, null, children));
+  return /* @__PURE__ */ jsxs(Card, { className: "w-full shadow-sm border", children: [
+    /* @__PURE__ */ jsxs(CardHeader, { children: [
+      /* @__PURE__ */ jsxs(CardTitle, { className: "flex justify-between items-center", children: [
+        name,
+        /* @__PURE__ */ jsx2("span", { className: `text-sm font-medium ${statusColor}`, children: status })
+      ] }),
+      /* @__PURE__ */ jsx2("p", { className: "text-sm text-muted-foreground", children: description })
+    ] }),
+    /* @__PURE__ */ jsx2(CardContent, { children })
+  ] });
 };
 
 // src/components/ui/button.tsx
-import * as React4 from "react";
+import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva as cva2 } from "class-variance-authority";
 
 // src/components/ui/spinner.tsx
 import { cva } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
+import { jsx as jsx3 } from "react/jsx-runtime";
 var spinnerVariants = cva("animate-spin", {
   variants: {
     size: {
@@ -157,10 +163,11 @@ var spinnerVariants = cva("animate-spin", {
   }
 });
 function Spinner({ size }) {
-  return /* @__PURE__ */ React.createElement(Loader2, { className: cn(spinnerVariants({ size })) });
+  return /* @__PURE__ */ jsx3(Loader2, { className: cn(spinnerVariants({ size })) });
 }
 
 // src/components/ui/button.tsx
+import { Fragment, jsx as jsx4, jsxs as jsxs2 } from "react/jsx-runtime";
 var buttonVariants = cva2(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -186,31 +193,35 @@ var buttonVariants = cva2(
     }
   }
 );
-var Button = React4.forwardRef(
+var Button = React.forwardRef(
   (_a, ref) => {
     var _b = _a, { className, variant, size, asChild = false, isLoading, children } = _b, props = __objRest(_b, ["className", "variant", "size", "asChild", "isLoading", "children"]);
     const Comp = asChild ? Slot : "button";
     props.disabled = isLoading || props.disabled;
-    return /* @__PURE__ */ React4.createElement(
+    return /* @__PURE__ */ jsx4(
       Comp,
-      __spreadValues({
+      __spreadProps(__spreadValues({
         className: cn(buttonVariants({ variant, size, className })),
         ref
-      }, props),
-      !asChild && isLoading ? /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement(Spinner, null), children) : children
+      }, props), {
+        children: !asChild && isLoading ? /* @__PURE__ */ jsxs2(Fragment, { children: [
+          /* @__PURE__ */ jsx4(Spinner, {}),
+          children
+        ] }) : children
+      })
     );
   }
 );
 Button.displayName = "Button";
 
 // src/components/ui/promptForm.tsx
-import * as React6 from "react";
+import * as React2 from "react";
 
 // src/components/ui/input.tsx
-import * as React5 from "react";
+import { jsx as jsx5 } from "react/jsx-runtime";
 function Input(_a) {
   var _b = _a, { className, type } = _b, props = __objRest(_b, ["className", "type"]);
-  return /* @__PURE__ */ React5.createElement(
+  return /* @__PURE__ */ jsx5(
     "input",
     __spreadValues({
       type,
@@ -226,36 +237,36 @@ function Input(_a) {
 }
 
 // src/components/ui/promptForm.tsx
+import { jsx as jsx6, jsxs as jsxs3 } from "react/jsx-runtime";
 var PromptForm = ({ onSubmit }) => {
-  const [prompt, setPrompt] = React6.useState("");
-  return /* @__PURE__ */ React6.createElement(
+  const [prompt, setPrompt] = React2.useState("");
+  return /* @__PURE__ */ jsxs3(
     "form",
     {
       onSubmit: (e) => {
         e.preventDefault();
         onSubmit(prompt);
       },
-      className: "flex gap-2"
-    },
-    /* @__PURE__ */ React6.createElement(
-      Input,
-      {
-        placeholder: "Ask the agent...",
-        value: prompt,
-        onChange: (e) => setPrompt(e.target.value)
-      }
-    ),
-    /* @__PURE__ */ React6.createElement(Button, { type: "submit" }, "Run")
+      className: "flex gap-2",
+      children: [
+        /* @__PURE__ */ jsx6(
+          Input,
+          {
+            placeholder: "Ask the agent...",
+            value: prompt,
+            onChange: (e) => setPrompt(e.target.value)
+          }
+        ),
+        /* @__PURE__ */ jsx6(Button, { type: "submit", children: "Run" })
+      ]
+    }
   );
 };
 
-// src/components/ui/statusBadge.tsx
-import * as React8 from "react";
-
 // src/components/ui/badge.tsx
-import * as React7 from "react";
 import { Slot as Slot2 } from "@radix-ui/react-slot";
 import { cva as cva3 } from "class-variance-authority";
+import { jsx as jsx7 } from "react/jsx-runtime";
 var badgeVariants = cva3(
   "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
   {
@@ -283,7 +294,7 @@ function Badge(_a) {
     "asChild"
   ]);
   const Comp = asChild ? Slot2 : "span";
-  return /* @__PURE__ */ React7.createElement(
+  return /* @__PURE__ */ jsx7(
     Comp,
     __spreadValues({
       "data-slot": "badge",
@@ -293,22 +304,24 @@ function Badge(_a) {
 }
 
 // src/components/ui/statusBadge.tsx
+import { jsx as jsx8 } from "react/jsx-runtime";
 var StatusBadge = ({ status }) => {
   const color = {
     success: "bg-green-500",
     pending: "bg-yellow-500",
     error: "bg-red-500"
   }[status];
-  return /* @__PURE__ */ React8.createElement(Badge, { className: `${color} text-white capitalize` }, status);
+  return /* @__PURE__ */ jsx8(Badge, { className: `${color} text-white capitalize`, children: status });
 };
 
 // src/components/ui/sonner.tsx
 import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "sonner";
+import { jsx as jsx9 } from "react/jsx-runtime";
 var Toaster = (_a) => {
   var props = __objRest(_a, []);
   const { theme = "system" } = useTheme();
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ jsx9(
     Sonner,
     __spreadValues({
       theme,
@@ -328,58 +341,68 @@ import { useState as useState3 } from "react";
 // src/components/layout/sidebar.tsx
 import Link from "next/link";
 import { ChevronsLeft, Menu } from "lucide-react";
+import { jsx as jsx10, jsxs as jsxs4 } from "react/jsx-runtime";
 function Sidebar({
   navItems,
   isCollapsed,
   onCollapseToggle,
   className
 }) {
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ jsxs4(
     "aside",
     {
       className: cn(
         "relative flex h-screen flex-col border-r bg-background p-4 transition-all duration-300 ease-in-out",
         isCollapsed ? "w-16" : "w-64",
         className
-      )
-    },
-    /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between" }, !isCollapsed && /* @__PURE__ */ React.createElement("h1", { className: "text-lg font-bold" }, "AI Dashboard"), /* @__PURE__ */ React.createElement(
-      Button,
-      {
-        variant: "outline",
-        size: "icon",
-        className: "h-8 w-8",
-        onClick: onCollapseToggle
-      },
-      isCollapsed ? /* @__PURE__ */ React.createElement(Menu, { className: "size-4" }) : /* @__PURE__ */ React.createElement(ChevronsLeft, { className: "size-4" })
-    )),
-    /* @__PURE__ */ React.createElement("nav", { className: "mt-8 flex flex-1 flex-col gap-2" }, navItems.map((item) => /* @__PURE__ */ React.createElement(
-      Button,
-      {
-        key: item.href,
-        variant: "ghost",
-        className: cn(
-          "justify-start gap-3",
-          isCollapsed && "h-10 w-10 justify-center p-0"
-        ),
-        asChild: true
-      },
-      /* @__PURE__ */ React.createElement(Link, { href: item.href }, item.icon, !isCollapsed && /* @__PURE__ */ React.createElement("span", { className: "flex-1" }, item.label), item.badge && !isCollapsed && /* @__PURE__ */ React.createElement(Badge, { variant: "secondary" }, item.badge))
-    )))
+      ),
+      children: [
+        /* @__PURE__ */ jsxs4("div", { className: "flex items-center justify-between", children: [
+          !isCollapsed && /* @__PURE__ */ jsx10("h1", { className: "text-lg font-bold", children: "AI Dashboard" }),
+          /* @__PURE__ */ jsx10(
+            Button,
+            {
+              variant: "outline",
+              size: "icon",
+              className: "h-8 w-8",
+              onClick: onCollapseToggle,
+              children: isCollapsed ? /* @__PURE__ */ jsx10(Menu, { className: "size-4" }) : /* @__PURE__ */ jsx10(ChevronsLeft, { className: "size-4" })
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsx10("nav", { className: "mt-8 flex flex-1 flex-col gap-2", children: navItems.map((item) => /* @__PURE__ */ jsx10(
+          Button,
+          {
+            variant: "ghost",
+            className: cn(
+              "justify-start gap-3",
+              isCollapsed && "h-10 w-10 justify-center p-0"
+            ),
+            asChild: true,
+            children: /* @__PURE__ */ jsxs4(Link, { href: item.href, children: [
+              item.icon,
+              !isCollapsed && /* @__PURE__ */ jsx10("span", { className: "flex-1", children: item.label }),
+              item.badge && !isCollapsed && /* @__PURE__ */ jsx10(Badge, { variant: "secondary", children: item.badge })
+            ] })
+          },
+          item.href
+        )) })
+      ]
+    }
   );
 }
 
 // src/components/ui/dropdownMenu.tsx
-import * as React9 from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+import { jsx as jsx11, jsxs as jsxs5 } from "react/jsx-runtime";
 function DropdownMenu(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React9.createElement(DropdownMenuPrimitive.Root, __spreadValues({ "data-slot": "dropdown-menu" }, props));
+  return /* @__PURE__ */ jsx11(DropdownMenuPrimitive.Root, __spreadValues({ "data-slot": "dropdown-menu" }, props));
 }
 function DropdownMenuTrigger(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ jsx11(
     DropdownMenuPrimitive.Trigger,
     __spreadValues({
       "data-slot": "dropdown-menu-trigger"
@@ -394,7 +417,7 @@ function DropdownMenuContent(_a) {
     "className",
     "sideOffset"
   ]);
-  return /* @__PURE__ */ React9.createElement(DropdownMenuPrimitive.Portal, null, /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ jsx11(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx11(
     DropdownMenuPrimitive.Content,
     __spreadValues({
       "data-slot": "dropdown-menu-content",
@@ -404,7 +427,7 @@ function DropdownMenuContent(_a) {
         className
       )
     }, props)
-  ));
+  ) });
 }
 function DropdownMenuItem(_a) {
   var _b = _a, {
@@ -416,7 +439,7 @@ function DropdownMenuItem(_a) {
     "inset",
     "variant"
   ]);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ jsx11(
     DropdownMenuPrimitive.Item,
     __spreadValues({
       "data-slot": "dropdown-menu-item",
@@ -437,7 +460,7 @@ function DropdownMenuLabel(_a) {
     "className",
     "inset"
   ]);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ jsx11(
     DropdownMenuPrimitive.Label,
     __spreadValues({
       "data-slot": "dropdown-menu-label",
@@ -455,7 +478,7 @@ function DropdownMenuSeparator(_a) {
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ jsx11(
     DropdownMenuPrimitive.Separator,
     __spreadValues({
       "data-slot": "dropdown-menu-separator",
@@ -465,15 +488,15 @@ function DropdownMenuSeparator(_a) {
 }
 
 // src/components/ui/avatar.tsx
-import * as React10 from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { jsx as jsx12 } from "react/jsx-runtime";
 function Avatar(_a) {
   var _b = _a, {
     className
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ jsx12(
     AvatarPrimitive.Root,
     __spreadValues({
       "data-slot": "avatar",
@@ -490,7 +513,7 @@ function AvatarImage(_a) {
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ jsx12(
     AvatarPrimitive.Image,
     __spreadValues({
       "data-slot": "avatar-image",
@@ -504,7 +527,7 @@ function AvatarFallback(_a) {
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ jsx12(
     AvatarPrimitive.Fallback,
     __spreadValues({
       "data-slot": "avatar-fallback",
@@ -518,31 +541,63 @@ function AvatarFallback(_a) {
 
 // src/components/layout/header.tsx
 import { Search, LogOut, Settings } from "lucide-react";
+import { jsx as jsx13, jsxs as jsxs6 } from "react/jsx-runtime";
 function Header({ user, children }) {
   const userInitials = user.name.split(" ").map((n) => n[0]).join("");
-  return /* @__PURE__ */ React.createElement("header", { className: "sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6" }, /* @__PURE__ */ React.createElement("div", { className: "relative flex-1" }, /* @__PURE__ */ React.createElement(Search, { className: "absolute left-2.5 top-2.5 size-4 text-muted-foreground" }), /* @__PURE__ */ React.createElement(
-    Input,
-    {
-      type: "search",
-      placeholder: "Search agents, logs, or tasks...",
-      className: "w-full rounded-lg bg-muted pl-8 md:w-[200px] lg:w-[336px]"
-    }
-  )), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-4" }, children, " ", /* @__PURE__ */ React.createElement(DropdownMenu, null, /* @__PURE__ */ React.createElement(DropdownMenuTrigger, { asChild: true }, /* @__PURE__ */ React.createElement(Button, { variant: "ghost", className: "relative h-8 w-8 rounded-full" }, /* @__PURE__ */ React.createElement(Avatar, { className: "h-9 w-9" }, /* @__PURE__ */ React.createElement(AvatarImage, { src: user.avatarUrl, alt: user.name }), /* @__PURE__ */ React.createElement(AvatarFallback, null, userInitials)))), /* @__PURE__ */ React.createElement(DropdownMenuContent, { align: "end" }, /* @__PURE__ */ React.createElement(DropdownMenuLabel, null, /* @__PURE__ */ React.createElement("div", { className: "flex flex-col space-y-1" }, /* @__PURE__ */ React.createElement("p", { className: "text-sm font-medium leading-none" }, user.name), /* @__PURE__ */ React.createElement("p", { className: "text-xs leading-none text-muted-foreground" }, user.email))), /* @__PURE__ */ React.createElement(DropdownMenuSeparator, null), /* @__PURE__ */ React.createElement(DropdownMenuItem, null, /* @__PURE__ */ React.createElement(Settings, { className: "mr-2 size-4" }), /* @__PURE__ */ React.createElement("span", null, "Settings")), /* @__PURE__ */ React.createElement(DropdownMenuSeparator, null), /* @__PURE__ */ React.createElement(DropdownMenuItem, null, /* @__PURE__ */ React.createElement(LogOut, { className: "mr-2 size-4" }), /* @__PURE__ */ React.createElement("span", null, "Log out"))))));
+  return /* @__PURE__ */ jsxs6("header", { className: "sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6", children: [
+    /* @__PURE__ */ jsxs6("div", { className: "relative flex-1", children: [
+      /* @__PURE__ */ jsx13(Search, { className: "absolute left-2.5 top-2.5 size-4 text-muted-foreground" }),
+      /* @__PURE__ */ jsx13(
+        Input,
+        {
+          type: "search",
+          placeholder: "Search agents, logs, or tasks...",
+          className: "w-full rounded-lg bg-muted pl-8 md:w-[200px] lg:w-[336px]"
+        }
+      )
+    ] }),
+    /* @__PURE__ */ jsxs6("div", { className: "flex items-center gap-4", children: [
+      children,
+      " ",
+      /* @__PURE__ */ jsxs6(DropdownMenu, { children: [
+        /* @__PURE__ */ jsx13(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsx13(Button, { variant: "ghost", className: "relative h-8 w-8 rounded-full", children: /* @__PURE__ */ jsxs6(Avatar, { className: "h-9 w-9", children: [
+          /* @__PURE__ */ jsx13(AvatarImage, { src: user.avatarUrl, alt: user.name }),
+          /* @__PURE__ */ jsx13(AvatarFallback, { children: userInitials })
+        ] }) }) }),
+        /* @__PURE__ */ jsxs6(DropdownMenuContent, { align: "end", children: [
+          /* @__PURE__ */ jsx13(DropdownMenuLabel, { children: /* @__PURE__ */ jsxs6("div", { className: "flex flex-col space-y-1", children: [
+            /* @__PURE__ */ jsx13("p", { className: "text-sm font-medium leading-none", children: user.name }),
+            /* @__PURE__ */ jsx13("p", { className: "text-xs leading-none text-muted-foreground", children: user.email })
+          ] }) }),
+          /* @__PURE__ */ jsx13(DropdownMenuSeparator, {}),
+          /* @__PURE__ */ jsxs6(DropdownMenuItem, { children: [
+            /* @__PURE__ */ jsx13(Settings, { className: "mr-2 size-4" }),
+            /* @__PURE__ */ jsx13("span", { children: "Settings" })
+          ] }),
+          /* @__PURE__ */ jsx13(DropdownMenuSeparator, {}),
+          /* @__PURE__ */ jsxs6(DropdownMenuItem, { children: [
+            /* @__PURE__ */ jsx13(LogOut, { className: "mr-2 size-4" }),
+            /* @__PURE__ */ jsx13("span", { children: "Log out" })
+          ] })
+        ] })
+      ] })
+    ] })
+  ] });
 }
 
 // src/components/layout/dashboardShell.tsx
 import { PlusCircle } from "lucide-react";
 
 // src/components/ui/popover.tsx
-import * as React11 from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { jsx as jsx14 } from "react/jsx-runtime";
 function Popover(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Root, __spreadValues({ "data-slot": "popover" }, props));
+  return /* @__PURE__ */ jsx14(PopoverPrimitive.Root, __spreadValues({ "data-slot": "popover" }, props));
 }
 function PopoverTrigger(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Trigger, __spreadValues({ "data-slot": "popover-trigger" }, props));
+  return /* @__PURE__ */ jsx14(PopoverPrimitive.Trigger, __spreadValues({ "data-slot": "popover-trigger" }, props));
 }
 function PopoverContent(_a) {
   var _b = _a, {
@@ -554,7 +609,7 @@ function PopoverContent(_a) {
     "align",
     "sideOffset"
   ]);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Portal, null, /* @__PURE__ */ React11.createElement(
+  return /* @__PURE__ */ jsx14(PopoverPrimitive.Portal, { children: /* @__PURE__ */ jsx14(
     PopoverPrimitive.Content,
     __spreadValues({
       "data-slot": "popover-content",
@@ -565,11 +620,11 @@ function PopoverContent(_a) {
         className
       )
     }, props)
-  ));
+  ) });
 }
 function PopoverAnchor(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Anchor, __spreadValues({ "data-slot": "popover-anchor" }, props));
+  return /* @__PURE__ */ jsx14(PopoverPrimitive.Anchor, __spreadValues({ "data-slot": "popover-anchor" }, props));
 }
 
 // src/hooks/useTheme.ts
@@ -622,6 +677,7 @@ function useTheme2() {
 
 // src/components/ui/themeCustomizer.tsx
 import { Check, Paintbrush } from "lucide-react";
+import { jsx as jsx15, jsxs as jsxs7 } from "react/jsx-runtime";
 var colorSwatches = {
   primary: [
     { value: "rgba(240, 5, 9, 1)", name: "Default" },
@@ -650,37 +706,56 @@ function ThemeCustomizer() {
   if (!theme) {
     return null;
   }
-  return /* @__PURE__ */ React.createElement(Popover, null, /* @__PURE__ */ React.createElement(PopoverTrigger, { asChild: true }, /* @__PURE__ */ React.createElement(Button, { variant: "outline", size: "icon" }, /* @__PURE__ */ React.createElement(Paintbrush, { className: "size-4" }))), /* @__PURE__ */ React.createElement(PopoverContent, { className: "w-64", align: "end" }, /* @__PURE__ */ React.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ React.createElement("h4", { className: "font-semibold leading-none" }, "Customize Theme"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium" }, "Primary"), /* @__PURE__ */ React.createElement("div", { className: "mt-2 grid grid-cols-3 gap-2" }, colorSwatches.primary.map((color) => /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      key: color.value,
-      className: cn("h-8 w-full rounded-md border", theme.primary === color.value && "ring-2 ring-ring ring-offset-2"),
-      style: { backgroundColor: color.value },
-      onClick: () => updateThemeColor("primary", color.value)
-    },
-    theme.primary === color.value && /* @__PURE__ */ React.createElement(Check, { className: "mx-auto size-4 text-white" })
-  )))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium" }, "Secondary"), /* @__PURE__ */ React.createElement("div", { className: "mt-2 grid grid-cols-3 gap-2" }, colorSwatches.secondary.map((color) => /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      key: color.value,
-      className: cn("h-8 w-full rounded-md border", theme.secondary === color.value && "ring-2 ring-ring ring-offset-2"),
-      style: { backgroundColor: color.value },
-      onClick: () => updateThemeColor("secondary", color.value)
-    },
-    theme.secondary === color.value && /* @__PURE__ */ React.createElement(Check, { className: "mx-auto size-4 text-primary" })
-  )))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium" }, "Tertiary"), /* @__PURE__ */ React.createElement("div", { className: "mt-2 grid grid-cols-3 gap-2" }, colorSwatches.tertiary.map((color) => /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      key: color.value,
-      className: cn("h-8 w-full rounded-md border", theme.tertiary === color.value && "ring-2 ring-ring ring-offset-2"),
-      style: { backgroundColor: color.value },
-      onClick: () => updateThemeColor("tertiary", color.value)
-    },
-    theme.tertiary === color.value && /* @__PURE__ */ React.createElement(Check, { className: "mx-auto size-4 text-white" })
-  )))), /* @__PURE__ */ React.createElement(Button, { variant: "ghost", className: "w-full justify-start", onClick: resetTheme }, "Reset to Defaults"))));
+  return /* @__PURE__ */ jsxs7(Popover, { children: [
+    /* @__PURE__ */ jsx15(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsx15(Button, { variant: "outline", size: "icon", children: /* @__PURE__ */ jsx15(Paintbrush, { className: "size-4" }) }) }),
+    /* @__PURE__ */ jsx15(PopoverContent, { className: "w-64", align: "end", children: /* @__PURE__ */ jsxs7("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsx15("h4", { className: "font-semibold leading-none", children: "Customize Theme" }),
+      /* @__PURE__ */ jsxs7("div", { children: [
+        /* @__PURE__ */ jsx15("label", { className: "text-sm font-medium", children: "Primary" }),
+        /* @__PURE__ */ jsx15("div", { className: "mt-2 grid grid-cols-3 gap-2", children: colorSwatches.primary.map((color) => /* @__PURE__ */ jsx15(
+          "button",
+          {
+            className: cn("h-8 w-full rounded-md border", theme.primary === color.value && "ring-2 ring-ring ring-offset-2"),
+            style: { backgroundColor: color.value },
+            onClick: () => updateThemeColor("primary", color.value),
+            children: theme.primary === color.value && /* @__PURE__ */ jsx15(Check, { className: "mx-auto size-4 text-white" })
+          },
+          color.value
+        )) })
+      ] }),
+      /* @__PURE__ */ jsxs7("div", { children: [
+        /* @__PURE__ */ jsx15("label", { className: "text-sm font-medium", children: "Secondary" }),
+        /* @__PURE__ */ jsx15("div", { className: "mt-2 grid grid-cols-3 gap-2", children: colorSwatches.secondary.map((color) => /* @__PURE__ */ jsx15(
+          "button",
+          {
+            className: cn("h-8 w-full rounded-md border", theme.secondary === color.value && "ring-2 ring-ring ring-offset-2"),
+            style: { backgroundColor: color.value },
+            onClick: () => updateThemeColor("secondary", color.value),
+            children: theme.secondary === color.value && /* @__PURE__ */ jsx15(Check, { className: "mx-auto size-4 text-primary" })
+          },
+          color.value
+        )) })
+      ] }),
+      /* @__PURE__ */ jsxs7("div", { children: [
+        /* @__PURE__ */ jsx15("label", { className: "text-sm font-medium", children: "Tertiary" }),
+        /* @__PURE__ */ jsx15("div", { className: "mt-2 grid grid-cols-3 gap-2", children: colorSwatches.tertiary.map((color) => /* @__PURE__ */ jsx15(
+          "button",
+          {
+            className: cn("h-8 w-full rounded-md border", theme.tertiary === color.value && "ring-2 ring-ring ring-offset-2"),
+            style: { backgroundColor: color.value },
+            onClick: () => updateThemeColor("tertiary", color.value),
+            children: theme.tertiary === color.value && /* @__PURE__ */ jsx15(Check, { className: "mx-auto size-4 text-white" })
+          },
+          color.value
+        )) })
+      ] }),
+      /* @__PURE__ */ jsx15(Button, { variant: "ghost", className: "w-full justify-start", onClick: resetTheme, children: "Reset to Defaults" })
+    ] }) })
+  ] });
 }
 
 // src/components/layout/dashboardShell.tsx
+import { jsx as jsx16, jsxs as jsxs8 } from "react/jsx-runtime";
 function DashboardShell({
   sidebarNavItems,
   user,
@@ -690,34 +765,46 @@ function DashboardShell({
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
-  return /* @__PURE__ */ React.createElement("div", { className: "flex min-h-screen w-full bg-muted/40" }, /* @__PURE__ */ React.createElement(
-    Sidebar,
-    {
-      navItems: sidebarNavItems || [],
-      isCollapsed,
-      onCollapseToggle: toggleSidebar
-    }
-  ), /* @__PURE__ */ React.createElement("div", { className: "flex flex-1 flex-col" }, /* @__PURE__ */ React.createElement(Header, { user: user || { name: "User", email: "user@example.com" } }, /* @__PURE__ */ React.createElement(ThemeCustomizer, null), /* @__PURE__ */ React.createElement(Button, { size: "sm", className: "gap-1" }, /* @__PURE__ */ React.createElement(PlusCircle, { className: "size-3.5" }), /* @__PURE__ */ React.createElement("span", { className: "sr-only sm:not-sr-only sm:whitespace-nowrap" }, "New Agent"))), /* @__PURE__ */ React.createElement("main", { className: "flex-1 p-4 sm:p-6" }, children)));
+  return /* @__PURE__ */ jsxs8("div", { className: "flex min-h-screen w-full bg-muted/40", children: [
+    /* @__PURE__ */ jsx16(
+      Sidebar,
+      {
+        navItems: sidebarNavItems || [],
+        isCollapsed,
+        onCollapseToggle: toggleSidebar
+      }
+    ),
+    /* @__PURE__ */ jsxs8("div", { className: "flex flex-1 flex-col", children: [
+      /* @__PURE__ */ jsxs8(Header, { user: user || { name: "User", email: "user@example.com" }, children: [
+        /* @__PURE__ */ jsx16(ThemeCustomizer, {}),
+        /* @__PURE__ */ jsxs8(Button, { size: "sm", className: "gap-1", children: [
+          /* @__PURE__ */ jsx16(PlusCircle, { className: "size-3.5" }),
+          /* @__PURE__ */ jsx16("span", { className: "sr-only sm:not-sr-only sm:whitespace-nowrap", children: "New Agent" })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx16("main", { className: "flex-1 p-4 sm:p-6", children })
+    ] })
+  ] });
 }
 
 // src/components/theme-provider.tsx
-import * as React12 from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { jsx as jsx17 } from "react/jsx-runtime";
 function ThemeProvider(_a) {
   var _b = _a, { children } = _b, props = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ React12.createElement(NextThemesProvider, __spreadValues({}, props), children);
+  return /* @__PURE__ */ jsx17(NextThemesProvider, __spreadProps(__spreadValues({}, props), { children }));
 }
 
 // src/components/ui/label.tsx
-import * as React13 from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
+import { jsx as jsx18 } from "react/jsx-runtime";
 function Label2(_a) {
   var _b = _a, {
     className
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React13.createElement(
+  return /* @__PURE__ */ jsx18(
     LabelPrimitive.Root,
     __spreadValues({
       "data-slot": "label",
@@ -730,6 +817,7 @@ function Label2(_a) {
 }
 
 // src/components/layout/loginLayout.tsx
+import { jsx as jsx19, jsxs as jsxs9 } from "react/jsx-runtime";
 function LoginLayout(_a) {
   var _b = _a, {
     className,
@@ -758,36 +846,70 @@ function LoginLayout(_a) {
     "signUpLink",
     "legalFooter"
   ]);
-  return /* @__PURE__ */ React.createElement("div", __spreadValues({ className: cn("w-full max-w-md", className) }, props), /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(CardHeader, { className: "text-center" }, /* @__PURE__ */ React.createElement(CardTitle, { className: "text-2xl" }, title), /* @__PURE__ */ React.createElement(CardDescription, null, description)), /* @__PURE__ */ React.createElement(CardContent, null, /* @__PURE__ */ React.createElement("div", { className: "grid gap-6" }, oauthProviders.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "flex flex-col gap-4" }, oauthProviders.map((provider) => /* @__PURE__ */ React.createElement("form", { key: provider.id, action: () => onOAuthSubmit(provider.id) }, /* @__PURE__ */ React.createElement(Button, { type: "submit", variant: "outline", className: "w-full" }, provider.icon, provider.label)))), oauthProviders.length > 0 && showCredentialsLogin && /* @__PURE__ */ React.createElement("div", { className: "relative text-sm text-center after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border" }, /* @__PURE__ */ React.createElement("span", { className: "relative z-10 bg-background px-2 text-muted-foreground" }, dividerText)), showCredentialsLogin && /* @__PURE__ */ React.createElement("form", { action: onCredentialsSubmit }, /* @__PURE__ */ React.createElement("div", { className: "grid gap-4" }, /* @__PURE__ */ React.createElement("div", { className: "grid gap-2" }, /* @__PURE__ */ React.createElement(Label2, { htmlFor: "email" }, "Email"), /* @__PURE__ */ React.createElement(Input, { id: "email", type: "email", name: "email", placeholder: "m@example.com", required: true })), /* @__PURE__ */ React.createElement("div", { className: "grid gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ React.createElement(Label2, { htmlFor: "password" }, "Password"), forgotPasswordLink && /* @__PURE__ */ React.createElement("a", { href: forgotPasswordLink.href, className: "ml-auto text-sm underline-offset-4 hover:underline" }, forgotPasswordLink.label || "Forgot your password?")), /* @__PURE__ */ React.createElement(Input, { id: "password", name: "password", type: "password", required: true })), /* @__PURE__ */ React.createElement(Button, { type: "submit", className: "w-full" }, credentialsSubmitLabel))), signUpLink && /* @__PURE__ */ React.createElement("div", { className: "text-sm text-center" }, signUpLink.text || "Don't have an account? ", /* @__PURE__ */ React.createElement("a", { href: signUpLink.href, className: "underline underline-offset-4" }, signUpLink.label || "Sign up"))))), legalFooter && /* @__PURE__ */ React.createElement("div", { className: "mt-4 text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary" }, legalFooter));
+  return /* @__PURE__ */ jsxs9("div", __spreadProps(__spreadValues({ className: cn("w-full max-w-md", className) }, props), { children: [
+    /* @__PURE__ */ jsxs9(Card, { children: [
+      /* @__PURE__ */ jsxs9(CardHeader, { className: "text-center", children: [
+        /* @__PURE__ */ jsx19(CardTitle, { className: "text-2xl", children: title }),
+        /* @__PURE__ */ jsx19(CardDescription, { children: description })
+      ] }),
+      /* @__PURE__ */ jsx19(CardContent, { children: /* @__PURE__ */ jsxs9("div", { className: "grid gap-6", children: [
+        oauthProviders.length > 0 && /* @__PURE__ */ jsx19("div", { className: "flex flex-col gap-4", children: oauthProviders.map((provider) => /* @__PURE__ */ jsx19("form", { action: () => onOAuthSubmit(provider.id), children: /* @__PURE__ */ jsxs9(Button, { type: "submit", variant: "outline", className: "w-full", children: [
+          provider.icon,
+          provider.label
+        ] }) }, provider.id)) }),
+        oauthProviders.length > 0 && showCredentialsLogin && /* @__PURE__ */ jsx19("div", { className: "relative text-sm text-center after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border", children: /* @__PURE__ */ jsx19("span", { className: "relative z-10 bg-background px-2 text-muted-foreground", children: dividerText }) }),
+        showCredentialsLogin && /* @__PURE__ */ jsx19("form", { action: onCredentialsSubmit, children: /* @__PURE__ */ jsxs9("div", { className: "grid gap-4", children: [
+          /* @__PURE__ */ jsxs9("div", { className: "grid gap-2", children: [
+            /* @__PURE__ */ jsx19(Label2, { htmlFor: "email", children: "Email" }),
+            /* @__PURE__ */ jsx19(Input, { id: "email", type: "email", name: "email", placeholder: "m@example.com", required: true })
+          ] }),
+          /* @__PURE__ */ jsxs9("div", { className: "grid gap-2", children: [
+            /* @__PURE__ */ jsxs9("div", { className: "flex items-center", children: [
+              /* @__PURE__ */ jsx19(Label2, { htmlFor: "password", children: "Password" }),
+              forgotPasswordLink && /* @__PURE__ */ jsx19("a", { href: forgotPasswordLink.href, className: "ml-auto text-sm underline-offset-4 hover:underline", children: forgotPasswordLink.label || "Forgot your password?" })
+            ] }),
+            /* @__PURE__ */ jsx19(Input, { id: "password", name: "password", type: "password", required: true })
+          ] }),
+          /* @__PURE__ */ jsx19(Button, { type: "submit", className: "w-full", children: credentialsSubmitLabel })
+        ] }) }),
+        signUpLink && /* @__PURE__ */ jsxs9("div", { className: "text-sm text-center", children: [
+          signUpLink.text || "Don't have an account? ",
+          /* @__PURE__ */ jsx19("a", { href: signUpLink.href, className: "underline underline-offset-4", children: signUpLink.label || "Sign up" })
+        ] })
+      ] }) })
+    ] }),
+    legalFooter && /* @__PURE__ */ jsx19("div", { className: "mt-4 text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary", children: legalFooter })
+  ] }));
 }
 
 // src/components/ui/checkbox.tsx
-import * as React14 from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon as CheckIcon2 } from "lucide-react";
+import { jsx as jsx20 } from "react/jsx-runtime";
 function Checkbox(_a) {
   var _b = _a, {
     className
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React14.createElement(
+  return /* @__PURE__ */ jsx20(
     CheckboxPrimitive.Root,
-    __spreadValues({
+    __spreadProps(__spreadValues({
       "data-slot": "checkbox",
       className: cn(
         "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
         className
       )
-    }, props),
-    /* @__PURE__ */ React14.createElement(
-      CheckboxPrimitive.Indicator,
-      {
-        "data-slot": "checkbox-indicator",
-        className: "flex items-center justify-center text-current transition-none"
-      },
-      /* @__PURE__ */ React14.createElement(CheckIcon2, { className: "size-3.5" })
-    )
+    }, props), {
+      children: /* @__PURE__ */ jsx20(
+        CheckboxPrimitive.Indicator,
+        {
+          "data-slot": "checkbox-indicator",
+          className: "flex items-center justify-center text-current transition-none",
+          children: /* @__PURE__ */ jsx20(CheckIcon2, { className: "size-3.5" })
+        }
+      )
+    })
   );
 }
 export {
@@ -818,3 +940,4 @@ export {
   Toaster,
   buttonVariants
 };
+//# sourceMappingURL=index.mjs.map

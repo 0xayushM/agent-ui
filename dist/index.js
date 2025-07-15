@@ -88,12 +88,6 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
-// src/components/ui/agentCard.tsx
-var React3 = __toESM(require("react"));
-
-// src/components/ui/card.tsx
-var React2 = __toESM(require("react"));
-
 // src/lib/utils.ts
 var import_clsx = require("clsx");
 var import_tailwind_merge = require("tailwind-merge");
@@ -102,9 +96,10 @@ function cn(...inputs) {
 }
 
 // src/components/ui/card.tsx
+var import_jsx_runtime = require("react/jsx-runtime");
 function Card(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadValues({
       "data-slot": "card",
@@ -117,7 +112,7 @@ function Card(_a) {
 }
 function CardHeader(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadValues({
       "data-slot": "card-header",
@@ -130,7 +125,7 @@ function CardHeader(_a) {
 }
 function CardTitle(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadValues({
       "data-slot": "card-title",
@@ -140,7 +135,7 @@ function CardTitle(_a) {
 }
 function CardDescription(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadValues({
       "data-slot": "card-description",
@@ -150,7 +145,7 @@ function CardDescription(_a) {
 }
 function CardAction(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadValues({
       "data-slot": "card-action",
@@ -163,7 +158,7 @@ function CardAction(_a) {
 }
 function CardContent(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadValues({
       "data-slot": "card-content",
@@ -173,7 +168,7 @@ function CardContent(_a) {
 }
 function CardFooter(_a) {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadValues({
       "data-slot": "card-footer",
@@ -183,6 +178,7 @@ function CardFooter(_a) {
 }
 
 // src/components/ui/agentCard.tsx
+var import_jsx_runtime2 = require("react/jsx-runtime");
 var AgentCard = ({
   name,
   description,
@@ -190,17 +186,27 @@ var AgentCard = ({
   children
 }) => {
   const statusColor = status === "active" ? "text-green-500" : status === "error" ? "text-red-500" : "text-muted-foreground";
-  return /* @__PURE__ */ React3.createElement(Card, { className: "w-full shadow-sm border" }, /* @__PURE__ */ React3.createElement(CardHeader, null, /* @__PURE__ */ React3.createElement(CardTitle, { className: "flex justify-between items-center" }, name, /* @__PURE__ */ React3.createElement("span", { className: `text-sm font-medium ${statusColor}` }, status)), /* @__PURE__ */ React3.createElement("p", { className: "text-sm text-muted-foreground" }, description)), /* @__PURE__ */ React3.createElement(CardContent, null, children));
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Card, { className: "w-full shadow-sm border", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(CardHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(CardTitle, { className: "flex justify-between items-center", children: [
+        name,
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: `text-sm font-medium ${statusColor}`, children: status })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("p", { className: "text-sm text-muted-foreground", children: description })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CardContent, { children })
+  ] });
 };
 
 // src/components/ui/button.tsx
-var React4 = __toESM(require("react"));
+var React = __toESM(require("react"));
 var import_react_slot = require("@radix-ui/react-slot");
 var import_class_variance_authority2 = require("class-variance-authority");
 
 // src/components/ui/spinner.tsx
 var import_class_variance_authority = require("class-variance-authority");
 var import_lucide_react = require("lucide-react");
+var import_jsx_runtime3 = require("react/jsx-runtime");
 var spinnerVariants = (0, import_class_variance_authority.cva)("animate-spin", {
   variants: {
     size: {
@@ -215,10 +221,11 @@ var spinnerVariants = (0, import_class_variance_authority.cva)("animate-spin", {
   }
 });
 function Spinner({ size }) {
-  return /* @__PURE__ */ React.createElement(import_lucide_react.Loader2, { className: cn(spinnerVariants({ size })) });
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_lucide_react.Loader2, { className: cn(spinnerVariants({ size })) });
 }
 
 // src/components/ui/button.tsx
+var import_jsx_runtime4 = require("react/jsx-runtime");
 var buttonVariants = (0, import_class_variance_authority2.cva)(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -244,31 +251,35 @@ var buttonVariants = (0, import_class_variance_authority2.cva)(
     }
   }
 );
-var Button = React4.forwardRef(
+var Button = React.forwardRef(
   (_a, ref) => {
     var _b = _a, { className, variant, size, asChild = false, isLoading, children } = _b, props = __objRest(_b, ["className", "variant", "size", "asChild", "isLoading", "children"]);
     const Comp = asChild ? import_react_slot.Slot : "button";
     props.disabled = isLoading || props.disabled;
-    return /* @__PURE__ */ React4.createElement(
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
       Comp,
-      __spreadValues({
+      __spreadProps(__spreadValues({
         className: cn(buttonVariants({ variant, size, className })),
         ref
-      }, props),
-      !asChild && isLoading ? /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement(Spinner, null), children) : children
+      }, props), {
+        children: !asChild && isLoading ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Spinner, {}),
+          children
+        ] }) : children
+      })
     );
   }
 );
 Button.displayName = "Button";
 
 // src/components/ui/promptForm.tsx
-var React6 = __toESM(require("react"));
+var React2 = __toESM(require("react"));
 
 // src/components/ui/input.tsx
-var React5 = __toESM(require("react"));
+var import_jsx_runtime5 = require("react/jsx-runtime");
 function Input(_a) {
   var _b = _a, { className, type } = _b, props = __objRest(_b, ["className", "type"]);
-  return /* @__PURE__ */ React5.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
     "input",
     __spreadValues({
       type,
@@ -284,36 +295,36 @@ function Input(_a) {
 }
 
 // src/components/ui/promptForm.tsx
+var import_jsx_runtime6 = require("react/jsx-runtime");
 var PromptForm = ({ onSubmit }) => {
-  const [prompt, setPrompt] = React6.useState("");
-  return /* @__PURE__ */ React6.createElement(
+  const [prompt, setPrompt] = React2.useState("");
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
     "form",
     {
       onSubmit: (e) => {
         e.preventDefault();
         onSubmit(prompt);
       },
-      className: "flex gap-2"
-    },
-    /* @__PURE__ */ React6.createElement(
-      Input,
-      {
-        placeholder: "Ask the agent...",
-        value: prompt,
-        onChange: (e) => setPrompt(e.target.value)
-      }
-    ),
-    /* @__PURE__ */ React6.createElement(Button, { type: "submit" }, "Run")
+      className: "flex gap-2",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          Input,
+          {
+            placeholder: "Ask the agent...",
+            value: prompt,
+            onChange: (e) => setPrompt(e.target.value)
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Button, { type: "submit", children: "Run" })
+      ]
+    }
   );
 };
 
-// src/components/ui/statusBadge.tsx
-var React8 = __toESM(require("react"));
-
 // src/components/ui/badge.tsx
-var React7 = __toESM(require("react"));
 var import_react_slot2 = require("@radix-ui/react-slot");
 var import_class_variance_authority3 = require("class-variance-authority");
+var import_jsx_runtime7 = require("react/jsx-runtime");
 var badgeVariants = (0, import_class_variance_authority3.cva)(
   "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
   {
@@ -341,7 +352,7 @@ function Badge(_a) {
     "asChild"
   ]);
   const Comp = asChild ? import_react_slot2.Slot : "span";
-  return /* @__PURE__ */ React7.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     Comp,
     __spreadValues({
       "data-slot": "badge",
@@ -351,22 +362,24 @@ function Badge(_a) {
 }
 
 // src/components/ui/statusBadge.tsx
+var import_jsx_runtime8 = require("react/jsx-runtime");
 var StatusBadge = ({ status }) => {
   const color = {
     success: "bg-green-500",
     pending: "bg-yellow-500",
     error: "bg-red-500"
   }[status];
-  return /* @__PURE__ */ React8.createElement(Badge, { className: `${color} text-white capitalize` }, status);
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Badge, { className: `${color} text-white capitalize`, children: status });
 };
 
 // src/components/ui/sonner.tsx
 var import_next_themes = require("next-themes");
 var import_sonner = require("sonner");
+var import_jsx_runtime9 = require("react/jsx-runtime");
 var Toaster = (_a) => {
   var props = __objRest(_a, []);
   const { theme = "system" } = (0, import_next_themes.useTheme)();
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
     import_sonner.Toaster,
     __spreadValues({
       theme,
@@ -386,58 +399,68 @@ var import_react2 = require("react");
 // src/components/layout/sidebar.tsx
 var import_link = __toESM(require("next/link"));
 var import_lucide_react2 = require("lucide-react");
+var import_jsx_runtime10 = require("react/jsx-runtime");
 function Sidebar({
   navItems,
   isCollapsed,
   onCollapseToggle,
   className
 }) {
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
     "aside",
     {
       className: cn(
         "relative flex h-screen flex-col border-r bg-background p-4 transition-all duration-300 ease-in-out",
         isCollapsed ? "w-16" : "w-64",
         className
-      )
-    },
-    /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between" }, !isCollapsed && /* @__PURE__ */ React.createElement("h1", { className: "text-lg font-bold" }, "AI Dashboard"), /* @__PURE__ */ React.createElement(
-      Button,
-      {
-        variant: "outline",
-        size: "icon",
-        className: "h-8 w-8",
-        onClick: onCollapseToggle
-      },
-      isCollapsed ? /* @__PURE__ */ React.createElement(import_lucide_react2.Menu, { className: "size-4" }) : /* @__PURE__ */ React.createElement(import_lucide_react2.ChevronsLeft, { className: "size-4" })
-    )),
-    /* @__PURE__ */ React.createElement("nav", { className: "mt-8 flex flex-1 flex-col gap-2" }, navItems.map((item) => /* @__PURE__ */ React.createElement(
-      Button,
-      {
-        key: item.href,
-        variant: "ghost",
-        className: cn(
-          "justify-start gap-3",
-          isCollapsed && "h-10 w-10 justify-center p-0"
-        ),
-        asChild: true
-      },
-      /* @__PURE__ */ React.createElement(import_link.default, { href: item.href }, item.icon, !isCollapsed && /* @__PURE__ */ React.createElement("span", { className: "flex-1" }, item.label), item.badge && !isCollapsed && /* @__PURE__ */ React.createElement(Badge, { variant: "secondary" }, item.badge))
-    )))
+      ),
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center justify-between", children: [
+          !isCollapsed && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h1", { className: "text-lg font-bold", children: "AI Dashboard" }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            Button,
+            {
+              variant: "outline",
+              size: "icon",
+              className: "h-8 w-8",
+              onClick: onCollapseToggle,
+              children: isCollapsed ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_lucide_react2.Menu, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_lucide_react2.ChevronsLeft, { className: "size-4" })
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("nav", { className: "mt-8 flex flex-1 flex-col gap-2", children: navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          Button,
+          {
+            variant: "ghost",
+            className: cn(
+              "justify-start gap-3",
+              isCollapsed && "h-10 w-10 justify-center p-0"
+            ),
+            asChild: true,
+            children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_link.default, { href: item.href, children: [
+              item.icon,
+              !isCollapsed && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "flex-1", children: item.label }),
+              item.badge && !isCollapsed && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Badge, { variant: "secondary", children: item.badge })
+            ] })
+          },
+          item.href
+        )) })
+      ]
+    }
   );
 }
 
 // src/components/ui/dropdownMenu.tsx
-var React9 = __toESM(require("react"));
 var DropdownMenuPrimitive = __toESM(require("@radix-ui/react-dropdown-menu"));
 var import_lucide_react3 = require("lucide-react");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 function DropdownMenu(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React9.createElement(DropdownMenuPrimitive.Root, __spreadValues({ "data-slot": "dropdown-menu" }, props));
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(DropdownMenuPrimitive.Root, __spreadValues({ "data-slot": "dropdown-menu" }, props));
 }
 function DropdownMenuTrigger(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     DropdownMenuPrimitive.Trigger,
     __spreadValues({
       "data-slot": "dropdown-menu-trigger"
@@ -452,7 +475,7 @@ function DropdownMenuContent(_a) {
     "className",
     "sideOffset"
   ]);
-  return /* @__PURE__ */ React9.createElement(DropdownMenuPrimitive.Portal, null, /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     DropdownMenuPrimitive.Content,
     __spreadValues({
       "data-slot": "dropdown-menu-content",
@@ -462,7 +485,7 @@ function DropdownMenuContent(_a) {
         className
       )
     }, props)
-  ));
+  ) });
 }
 function DropdownMenuItem(_a) {
   var _b = _a, {
@@ -474,7 +497,7 @@ function DropdownMenuItem(_a) {
     "inset",
     "variant"
   ]);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     DropdownMenuPrimitive.Item,
     __spreadValues({
       "data-slot": "dropdown-menu-item",
@@ -495,7 +518,7 @@ function DropdownMenuLabel(_a) {
     "className",
     "inset"
   ]);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     DropdownMenuPrimitive.Label,
     __spreadValues({
       "data-slot": "dropdown-menu-label",
@@ -513,7 +536,7 @@ function DropdownMenuSeparator(_a) {
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     DropdownMenuPrimitive.Separator,
     __spreadValues({
       "data-slot": "dropdown-menu-separator",
@@ -523,15 +546,15 @@ function DropdownMenuSeparator(_a) {
 }
 
 // src/components/ui/avatar.tsx
-var React10 = __toESM(require("react"));
 var AvatarPrimitive = __toESM(require("@radix-ui/react-avatar"));
+var import_jsx_runtime12 = require("react/jsx-runtime");
 function Avatar(_a) {
   var _b = _a, {
     className
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
     AvatarPrimitive.Root,
     __spreadValues({
       "data-slot": "avatar",
@@ -548,7 +571,7 @@ function AvatarImage(_a) {
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
     AvatarPrimitive.Image,
     __spreadValues({
       "data-slot": "avatar-image",
@@ -562,7 +585,7 @@ function AvatarFallback(_a) {
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React10.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
     AvatarPrimitive.Fallback,
     __spreadValues({
       "data-slot": "avatar-fallback",
@@ -576,31 +599,63 @@ function AvatarFallback(_a) {
 
 // src/components/layout/header.tsx
 var import_lucide_react4 = require("lucide-react");
+var import_jsx_runtime13 = require("react/jsx-runtime");
 function Header({ user, children }) {
   const userInitials = user.name.split(" ").map((n) => n[0]).join("");
-  return /* @__PURE__ */ React.createElement("header", { className: "sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6" }, /* @__PURE__ */ React.createElement("div", { className: "relative flex-1" }, /* @__PURE__ */ React.createElement(import_lucide_react4.Search, { className: "absolute left-2.5 top-2.5 size-4 text-muted-foreground" }), /* @__PURE__ */ React.createElement(
-    Input,
-    {
-      type: "search",
-      placeholder: "Search agents, logs, or tasks...",
-      className: "w-full rounded-lg bg-muted pl-8 md:w-[200px] lg:w-[336px]"
-    }
-  )), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-4" }, children, " ", /* @__PURE__ */ React.createElement(DropdownMenu, null, /* @__PURE__ */ React.createElement(DropdownMenuTrigger, { asChild: true }, /* @__PURE__ */ React.createElement(Button, { variant: "ghost", className: "relative h-8 w-8 rounded-full" }, /* @__PURE__ */ React.createElement(Avatar, { className: "h-9 w-9" }, /* @__PURE__ */ React.createElement(AvatarImage, { src: user.avatarUrl, alt: user.name }), /* @__PURE__ */ React.createElement(AvatarFallback, null, userInitials)))), /* @__PURE__ */ React.createElement(DropdownMenuContent, { align: "end" }, /* @__PURE__ */ React.createElement(DropdownMenuLabel, null, /* @__PURE__ */ React.createElement("div", { className: "flex flex-col space-y-1" }, /* @__PURE__ */ React.createElement("p", { className: "text-sm font-medium leading-none" }, user.name), /* @__PURE__ */ React.createElement("p", { className: "text-xs leading-none text-muted-foreground" }, user.email))), /* @__PURE__ */ React.createElement(DropdownMenuSeparator, null), /* @__PURE__ */ React.createElement(DropdownMenuItem, null, /* @__PURE__ */ React.createElement(import_lucide_react4.Settings, { className: "mr-2 size-4" }), /* @__PURE__ */ React.createElement("span", null, "Settings")), /* @__PURE__ */ React.createElement(DropdownMenuSeparator, null), /* @__PURE__ */ React.createElement(DropdownMenuItem, null, /* @__PURE__ */ React.createElement(import_lucide_react4.LogOut, { className: "mr-2 size-4" }), /* @__PURE__ */ React.createElement("span", null, "Log out"))))));
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("header", { className: "sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "relative flex-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_lucide_react4.Search, { className: "absolute left-2.5 top-2.5 size-4 text-muted-foreground" }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+        Input,
+        {
+          type: "search",
+          placeholder: "Search agents, logs, or tasks...",
+          className: "w-full rounded-lg bg-muted pl-8 md:w-[200px] lg:w-[336px]"
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center gap-4", children: [
+      children,
+      " ",
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DropdownMenu, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Button, { variant: "ghost", className: "relative h-8 w-8 rounded-full", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(Avatar, { className: "h-9 w-9", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(AvatarImage, { src: user.avatarUrl, alt: user.name }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(AvatarFallback, { children: userInitials })
+        ] }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DropdownMenuContent, { align: "end", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(DropdownMenuLabel, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex flex-col space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-sm font-medium leading-none", children: user.name }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-xs leading-none text-muted-foreground", children: user.email })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(DropdownMenuSeparator, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DropdownMenuItem, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_lucide_react4.Settings, { className: "mr-2 size-4" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Settings" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(DropdownMenuSeparator, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DropdownMenuItem, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_lucide_react4.LogOut, { className: "mr-2 size-4" }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: "Log out" })
+          ] })
+        ] })
+      ] })
+    ] })
+  ] });
 }
 
 // src/components/layout/dashboardShell.tsx
 var import_lucide_react6 = require("lucide-react");
 
 // src/components/ui/popover.tsx
-var React11 = __toESM(require("react"));
 var PopoverPrimitive = __toESM(require("@radix-ui/react-popover"));
+var import_jsx_runtime14 = require("react/jsx-runtime");
 function Popover(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Root, __spreadValues({ "data-slot": "popover" }, props));
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PopoverPrimitive.Root, __spreadValues({ "data-slot": "popover" }, props));
 }
 function PopoverTrigger(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Trigger, __spreadValues({ "data-slot": "popover-trigger" }, props));
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PopoverPrimitive.Trigger, __spreadValues({ "data-slot": "popover-trigger" }, props));
 }
 function PopoverContent(_a) {
   var _b = _a, {
@@ -612,7 +667,7 @@ function PopoverContent(_a) {
     "align",
     "sideOffset"
   ]);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Portal, null, /* @__PURE__ */ React11.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PopoverPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
     PopoverPrimitive.Content,
     __spreadValues({
       "data-slot": "popover-content",
@@ -623,11 +678,11 @@ function PopoverContent(_a) {
         className
       )
     }, props)
-  ));
+  ) });
 }
 function PopoverAnchor(_a) {
   var props = __objRest(_a, []);
-  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Anchor, __spreadValues({ "data-slot": "popover-anchor" }, props));
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PopoverPrimitive.Anchor, __spreadValues({ "data-slot": "popover-anchor" }, props));
 }
 
 // src/hooks/useTheme.ts
@@ -680,6 +735,7 @@ function useTheme2() {
 
 // src/components/ui/themeCustomizer.tsx
 var import_lucide_react5 = require("lucide-react");
+var import_jsx_runtime15 = require("react/jsx-runtime");
 var colorSwatches = {
   primary: [
     { value: "rgba(240, 5, 9, 1)", name: "Default" },
@@ -708,37 +764,56 @@ function ThemeCustomizer() {
   if (!theme) {
     return null;
   }
-  return /* @__PURE__ */ React.createElement(Popover, null, /* @__PURE__ */ React.createElement(PopoverTrigger, { asChild: true }, /* @__PURE__ */ React.createElement(Button, { variant: "outline", size: "icon" }, /* @__PURE__ */ React.createElement(import_lucide_react5.Paintbrush, { className: "size-4" }))), /* @__PURE__ */ React.createElement(PopoverContent, { className: "w-64", align: "end" }, /* @__PURE__ */ React.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ React.createElement("h4", { className: "font-semibold leading-none" }, "Customize Theme"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium" }, "Primary"), /* @__PURE__ */ React.createElement("div", { className: "mt-2 grid grid-cols-3 gap-2" }, colorSwatches.primary.map((color) => /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      key: color.value,
-      className: cn("h-8 w-full rounded-md border", theme.primary === color.value && "ring-2 ring-ring ring-offset-2"),
-      style: { backgroundColor: color.value },
-      onClick: () => updateThemeColor("primary", color.value)
-    },
-    theme.primary === color.value && /* @__PURE__ */ React.createElement(import_lucide_react5.Check, { className: "mx-auto size-4 text-white" })
-  )))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium" }, "Secondary"), /* @__PURE__ */ React.createElement("div", { className: "mt-2 grid grid-cols-3 gap-2" }, colorSwatches.secondary.map((color) => /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      key: color.value,
-      className: cn("h-8 w-full rounded-md border", theme.secondary === color.value && "ring-2 ring-ring ring-offset-2"),
-      style: { backgroundColor: color.value },
-      onClick: () => updateThemeColor("secondary", color.value)
-    },
-    theme.secondary === color.value && /* @__PURE__ */ React.createElement(import_lucide_react5.Check, { className: "mx-auto size-4 text-primary" })
-  )))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium" }, "Tertiary"), /* @__PURE__ */ React.createElement("div", { className: "mt-2 grid grid-cols-3 gap-2" }, colorSwatches.tertiary.map((color) => /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      key: color.value,
-      className: cn("h-8 w-full rounded-md border", theme.tertiary === color.value && "ring-2 ring-ring ring-offset-2"),
-      style: { backgroundColor: color.value },
-      onClick: () => updateThemeColor("tertiary", color.value)
-    },
-    theme.tertiary === color.value && /* @__PURE__ */ React.createElement(import_lucide_react5.Check, { className: "mx-auto size-4 text-white" })
-  )))), /* @__PURE__ */ React.createElement(Button, { variant: "ghost", className: "w-full justify-start", onClick: resetTheme }, "Reset to Defaults"))));
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Popover, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Button, { variant: "outline", size: "icon", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react5.Paintbrush, { className: "size-4" }) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(PopoverContent, { className: "w-64", align: "end", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h4", { className: "font-semibold leading-none", children: "Customize Theme" }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { className: "text-sm font-medium", children: "Primary" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mt-2 grid grid-cols-3 gap-2", children: colorSwatches.primary.map((color) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          "button",
+          {
+            className: cn("h-8 w-full rounded-md border", theme.primary === color.value && "ring-2 ring-ring ring-offset-2"),
+            style: { backgroundColor: color.value },
+            onClick: () => updateThemeColor("primary", color.value),
+            children: theme.primary === color.value && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react5.Check, { className: "mx-auto size-4 text-white" })
+          },
+          color.value
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { className: "text-sm font-medium", children: "Secondary" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mt-2 grid grid-cols-3 gap-2", children: colorSwatches.secondary.map((color) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          "button",
+          {
+            className: cn("h-8 w-full rounded-md border", theme.secondary === color.value && "ring-2 ring-ring ring-offset-2"),
+            style: { backgroundColor: color.value },
+            onClick: () => updateThemeColor("secondary", color.value),
+            children: theme.secondary === color.value && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react5.Check, { className: "mx-auto size-4 text-primary" })
+          },
+          color.value
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { className: "text-sm font-medium", children: "Tertiary" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mt-2 grid grid-cols-3 gap-2", children: colorSwatches.tertiary.map((color) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          "button",
+          {
+            className: cn("h-8 w-full rounded-md border", theme.tertiary === color.value && "ring-2 ring-ring ring-offset-2"),
+            style: { backgroundColor: color.value },
+            onClick: () => updateThemeColor("tertiary", color.value),
+            children: theme.tertiary === color.value && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react5.Check, { className: "mx-auto size-4 text-white" })
+          },
+          color.value
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Button, { variant: "ghost", className: "w-full justify-start", onClick: resetTheme, children: "Reset to Defaults" })
+    ] }) })
+  ] });
 }
 
 // src/components/layout/dashboardShell.tsx
+var import_jsx_runtime16 = require("react/jsx-runtime");
 function DashboardShell({
   sidebarNavItems,
   user,
@@ -748,34 +823,46 @@ function DashboardShell({
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
-  return /* @__PURE__ */ React.createElement("div", { className: "flex min-h-screen w-full bg-muted/40" }, /* @__PURE__ */ React.createElement(
-    Sidebar,
-    {
-      navItems: sidebarNavItems || [],
-      isCollapsed,
-      onCollapseToggle: toggleSidebar
-    }
-  ), /* @__PURE__ */ React.createElement("div", { className: "flex flex-1 flex-col" }, /* @__PURE__ */ React.createElement(Header, { user: user || { name: "User", email: "user@example.com" } }, /* @__PURE__ */ React.createElement(ThemeCustomizer, null), /* @__PURE__ */ React.createElement(Button, { size: "sm", className: "gap-1" }, /* @__PURE__ */ React.createElement(import_lucide_react6.PlusCircle, { className: "size-3.5" }), /* @__PURE__ */ React.createElement("span", { className: "sr-only sm:not-sr-only sm:whitespace-nowrap" }, "New Agent"))), /* @__PURE__ */ React.createElement("main", { className: "flex-1 p-4 sm:p-6" }, children)));
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex min-h-screen w-full bg-muted/40", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+      Sidebar,
+      {
+        navItems: sidebarNavItems || [],
+        isCollapsed,
+        onCollapseToggle: toggleSidebar
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-1 flex-col", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(Header, { user: user || { name: "User", email: "user@example.com" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ThemeCustomizer, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(Button, { size: "sm", className: "gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lucide_react6.PlusCircle, { className: "size-3.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "sr-only sm:not-sr-only sm:whitespace-nowrap", children: "New Agent" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("main", { className: "flex-1 p-4 sm:p-6", children })
+    ] })
+  ] });
 }
 
 // src/components/theme-provider.tsx
-var React12 = __toESM(require("react"));
 var import_next_themes2 = require("next-themes");
+var import_jsx_runtime17 = require("react/jsx-runtime");
 function ThemeProvider(_a) {
   var _b = _a, { children } = _b, props = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ React12.createElement(import_next_themes2.ThemeProvider, __spreadValues({}, props), children);
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(import_next_themes2.ThemeProvider, __spreadProps(__spreadValues({}, props), { children }));
 }
 
 // src/components/ui/label.tsx
-var React13 = __toESM(require("react"));
 var LabelPrimitive = __toESM(require("@radix-ui/react-label"));
+var import_jsx_runtime18 = require("react/jsx-runtime");
 function Label2(_a) {
   var _b = _a, {
     className
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React13.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
     LabelPrimitive.Root,
     __spreadValues({
       "data-slot": "label",
@@ -788,6 +875,7 @@ function Label2(_a) {
 }
 
 // src/components/layout/loginLayout.tsx
+var import_jsx_runtime19 = require("react/jsx-runtime");
 function LoginLayout(_a) {
   var _b = _a, {
     className,
@@ -816,36 +904,70 @@ function LoginLayout(_a) {
     "signUpLink",
     "legalFooter"
   ]);
-  return /* @__PURE__ */ React.createElement("div", __spreadValues({ className: cn("w-full max-w-md", className) }, props), /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(CardHeader, { className: "text-center" }, /* @__PURE__ */ React.createElement(CardTitle, { className: "text-2xl" }, title), /* @__PURE__ */ React.createElement(CardDescription, null, description)), /* @__PURE__ */ React.createElement(CardContent, null, /* @__PURE__ */ React.createElement("div", { className: "grid gap-6" }, oauthProviders.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "flex flex-col gap-4" }, oauthProviders.map((provider) => /* @__PURE__ */ React.createElement("form", { key: provider.id, action: () => onOAuthSubmit(provider.id) }, /* @__PURE__ */ React.createElement(Button, { type: "submit", variant: "outline", className: "w-full" }, provider.icon, provider.label)))), oauthProviders.length > 0 && showCredentialsLogin && /* @__PURE__ */ React.createElement("div", { className: "relative text-sm text-center after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border" }, /* @__PURE__ */ React.createElement("span", { className: "relative z-10 bg-background px-2 text-muted-foreground" }, dividerText)), showCredentialsLogin && /* @__PURE__ */ React.createElement("form", { action: onCredentialsSubmit }, /* @__PURE__ */ React.createElement("div", { className: "grid gap-4" }, /* @__PURE__ */ React.createElement("div", { className: "grid gap-2" }, /* @__PURE__ */ React.createElement(Label2, { htmlFor: "email" }, "Email"), /* @__PURE__ */ React.createElement(Input, { id: "email", type: "email", name: "email", placeholder: "m@example.com", required: true })), /* @__PURE__ */ React.createElement("div", { className: "grid gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ React.createElement(Label2, { htmlFor: "password" }, "Password"), forgotPasswordLink && /* @__PURE__ */ React.createElement("a", { href: forgotPasswordLink.href, className: "ml-auto text-sm underline-offset-4 hover:underline" }, forgotPasswordLink.label || "Forgot your password?")), /* @__PURE__ */ React.createElement(Input, { id: "password", name: "password", type: "password", required: true })), /* @__PURE__ */ React.createElement(Button, { type: "submit", className: "w-full" }, credentialsSubmitLabel))), signUpLink && /* @__PURE__ */ React.createElement("div", { className: "text-sm text-center" }, signUpLink.text || "Don't have an account? ", /* @__PURE__ */ React.createElement("a", { href: signUpLink.href, className: "underline underline-offset-4" }, signUpLink.label || "Sign up"))))), legalFooter && /* @__PURE__ */ React.createElement("div", { className: "mt-4 text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary" }, legalFooter));
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", __spreadProps(__spreadValues({ className: cn("w-full max-w-md", className) }, props), { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(Card, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(CardHeader, { className: "text-center", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(CardTitle, { className: "text-2xl", children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(CardDescription, { children: description })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(CardContent, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid gap-6", children: [
+        oauthProviders.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex flex-col gap-4", children: oauthProviders.map((provider) => /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("form", { action: () => onOAuthSubmit(provider.id), children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(Button, { type: "submit", variant: "outline", className: "w-full", children: [
+          provider.icon,
+          provider.label
+        ] }) }, provider.id)) }),
+        oauthProviders.length > 0 && showCredentialsLogin && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "relative text-sm text-center after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "relative z-10 bg-background px-2 text-muted-foreground", children: dividerText }) }),
+        showCredentialsLogin && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("form", { action: onCredentialsSubmit, children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid gap-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Label2, { htmlFor: "email", children: "Email" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Input, { id: "email", type: "email", name: "email", placeholder: "m@example.com", required: true })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "grid gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Label2, { htmlFor: "password", children: "Password" }),
+              forgotPasswordLink && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("a", { href: forgotPasswordLink.href, className: "ml-auto text-sm underline-offset-4 hover:underline", children: forgotPasswordLink.label || "Forgot your password?" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Input, { id: "password", name: "password", type: "password", required: true })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Button, { type: "submit", className: "w-full", children: credentialsSubmitLabel })
+        ] }) }),
+        signUpLink && /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-sm text-center", children: [
+          signUpLink.text || "Don't have an account? ",
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("a", { href: signUpLink.href, className: "underline underline-offset-4", children: signUpLink.label || "Sign up" })
+        ] })
+      ] }) })
+    ] }),
+    legalFooter && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "mt-4 text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary", children: legalFooter })
+  ] }));
 }
 
 // src/components/ui/checkbox.tsx
-var React14 = __toESM(require("react"));
 var CheckboxPrimitive = __toESM(require("@radix-ui/react-checkbox"));
 var import_lucide_react7 = require("lucide-react");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 function Checkbox(_a) {
   var _b = _a, {
     className
   } = _b, props = __objRest(_b, [
     "className"
   ]);
-  return /* @__PURE__ */ React14.createElement(
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
     CheckboxPrimitive.Root,
-    __spreadValues({
+    __spreadProps(__spreadValues({
       "data-slot": "checkbox",
       className: cn(
         "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
         className
       )
-    }, props),
-    /* @__PURE__ */ React14.createElement(
-      CheckboxPrimitive.Indicator,
-      {
-        "data-slot": "checkbox-indicator",
-        className: "flex items-center justify-center text-current transition-none"
-      },
-      /* @__PURE__ */ React14.createElement(import_lucide_react7.CheckIcon, { className: "size-3.5" })
-    )
+    }, props), {
+      children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+        CheckboxPrimitive.Indicator,
+        {
+          "data-slot": "checkbox-indicator",
+          className: "flex items-center justify-center text-current transition-none",
+          children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_lucide_react7.CheckIcon, { className: "size-3.5" })
+        }
+      )
+    })
   );
 }
 // Annotate the CommonJS export names for ESM import in node:
@@ -877,3 +999,4 @@ function Checkbox(_a) {
   Toaster,
   buttonVariants
 });
+//# sourceMappingURL=index.js.map

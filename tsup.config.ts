@@ -9,7 +9,7 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-
+  tsconfig: "tsconfig.build.json",
   // 👇 The correct configuration for esbuild's JSX transform
   esbuildOptions(options) {
     options.jsx = 'automatic'; // Use 'automatic' instead of 'react-jsx'
