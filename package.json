@@ -1,6 +1,6 @@
 {
   "name": "@0xayushm/agent-ui",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "private": false,
   "description": "A reusable UI component library for AI agent dashboards.",
   "license": "MIT",
