@@ -10,18 +10,18 @@ var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b2) => {
-  for (var prop in b2 || (b2 = {}))
-    if (__hasOwnProp.call(b2, prop))
-      __defNormalProp(a, prop, b2[prop]);
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
   if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b2)) {
-      if (__propIsEnum.call(b2, prop))
-        __defNormalProp(a, prop, b2[prop]);
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
     }
   return a;
 };
-var __spreadProps = (a, b2) => __defProps(a, __getOwnPropDescs(b2));
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -360,107 +360,12 @@ var StatusBadge = ({ status }) => {
   return /* @__PURE__ */ React8.createElement(Badge, { className: `${color} text-white capitalize` }, status);
 };
 
-// node_modules/next-themes/dist/index.mjs
-var t = __toESM(require("react"), 1);
-var M = (e, i, s, u, m, a, l, h) => {
-  let d = document.documentElement, w = ["light", "dark"];
-  function p(n) {
-    (Array.isArray(e) ? e : [e]).forEach((y) => {
-      let k = y === "class", S = k && a ? m.map((f) => a[f] || f) : m;
-      k ? (d.classList.remove(...S), d.classList.add(a && a[n] ? a[n] : n)) : d.setAttribute(y, n);
-    }), R(n);
-  }
-  function R(n) {
-    h && w.includes(n) && (d.style.colorScheme = n);
-  }
-  function c() {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-  if (u) p(u);
-  else try {
-    let n = localStorage.getItem(i) || s, y = l && n === "system" ? c() : n;
-    p(y);
-  } catch (n) {
-  }
-};
-var b = ["light", "dark"];
-var I = "(prefers-color-scheme: dark)";
-var O = typeof window == "undefined";
-var x = t.createContext(void 0);
-var U = { setTheme: (e) => {
-}, themes: [] };
-var z = () => {
-  var e;
-  return (e = t.useContext(x)) != null ? e : U;
-};
-var J = (e) => t.useContext(x) ? t.createElement(t.Fragment, null, e.children) : t.createElement(V, __spreadValues({}, e));
-var N = ["light", "dark"];
-var V = ({ forcedTheme: e, disableTransitionOnChange: i = false, enableSystem: s = true, enableColorScheme: u = true, storageKey: m = "theme", themes: a = N, defaultTheme: l = s ? "system" : "light", attribute: h = "data-theme", value: d, children: w, nonce: p, scriptProps: R }) => {
-  let [c, n] = t.useState(() => H(m, l)), [T, y] = t.useState(() => c === "system" ? E() : c), k = d ? Object.values(d) : a, S = t.useCallback((o) => {
-    let r = o;
-    if (!r) return;
-    o === "system" && s && (r = E());
-    let v = d ? d[r] : r, C = i ? W(p) : null, P = document.documentElement, L = (g) => {
-      g === "class" ? (P.classList.remove(...k), v && P.classList.add(v)) : g.startsWith("data-") && (v ? P.setAttribute(g, v) : P.removeAttribute(g));
-    };
-    if (Array.isArray(h) ? h.forEach(L) : L(h), u) {
-      let g = b.includes(l) ? l : null, D = b.includes(r) ? r : g;
-      P.style.colorScheme = D;
-    }
-    C == null || C();
-  }, [p]), f = t.useCallback((o) => {
-    let r = typeof o == "function" ? o(c) : o;
-    n(r);
-    try {
-      localStorage.setItem(m, r);
-    } catch (v) {
-    }
-  }, [c]), A = t.useCallback((o) => {
-    let r = E(o);
-    y(r), c === "system" && s && !e && S("system");
-  }, [c, e]);
-  t.useEffect(() => {
-    let o = window.matchMedia(I);
-    return o.addListener(A), A(o), () => o.removeListener(A);
-  }, [A]), t.useEffect(() => {
-    let o = (r) => {
-      r.key === m && (r.newValue ? n(r.newValue) : f(l));
-    };
-    return window.addEventListener("storage", o), () => window.removeEventListener("storage", o);
-  }, [f]), t.useEffect(() => {
-    S(e != null ? e : c);
-  }, [e, c]);
-  let Q = t.useMemo(() => ({ theme: c, setTheme: f, forcedTheme: e, resolvedTheme: c === "system" ? T : c, themes: s ? [...a, "system"] : a, systemTheme: s ? T : void 0 }), [c, f, e, T, s, a]);
-  return t.createElement(x.Provider, { value: Q }, t.createElement(_, { forcedTheme: e, storageKey: m, attribute: h, enableSystem: s, enableColorScheme: u, defaultTheme: l, value: d, themes: a, nonce: p, scriptProps: R }), w);
-};
-var _ = t.memo(({ forcedTheme: e, storageKey: i, attribute: s, enableSystem: u, enableColorScheme: m, defaultTheme: a, value: l, themes: h, nonce: d, scriptProps: w }) => {
-  let p = JSON.stringify([s, i, a, e, h, l, u, m]).slice(1, -1);
-  return t.createElement("script", __spreadProps(__spreadValues({}, w), { suppressHydrationWarning: true, nonce: typeof window == "undefined" ? d : "", dangerouslySetInnerHTML: { __html: `(${M.toString()})(${p})` } }));
-});
-var H = (e, i) => {
-  if (O) return;
-  let s;
-  try {
-    s = localStorage.getItem(e) || void 0;
-  } catch (u) {
-  }
-  return s || i;
-};
-var W = (e) => {
-  let i = document.createElement("style");
-  return e && i.setAttribute("nonce", e), i.appendChild(document.createTextNode("*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}")), document.head.appendChild(i), () => {
-    window.getComputedStyle(document.body), setTimeout(() => {
-      document.head.removeChild(i);
-    }, 1);
-  };
-};
-var E = (e) => (e || (e = window.matchMedia(I)), e.matches ? "dark" : "light");
-
 // src/components/ui/sonner.tsx
+var import_next_themes = require("next-themes");
 var import_sonner = require("sonner");
 var Toaster = (_a) => {
   var props = __objRest(_a, []);
-  const { theme = "system" } = z();
+  const { theme = "system" } = (0, import_next_themes.useTheme)();
   return /* @__PURE__ */ React.createElement(
     import_sonner.Toaster,
     __spreadValues({
@@ -732,7 +637,7 @@ var defaultTheme = {
   secondary: "240 4.8% 95.9%",
   tertiary: "172.5 50.3% 46.9%"
 };
-function useTheme() {
+function useTheme2() {
   const [theme, setTheme] = (0, import_react.useState)(null);
   (0, import_react.useEffect)(() => {
     try {
@@ -799,7 +704,7 @@ var colorSwatches = {
   ]
 };
 function ThemeCustomizer() {
-  const { theme, updateThemeColor, resetTheme } = useTheme();
+  const { theme, updateThemeColor, resetTheme } = useTheme2();
   if (!theme) {
     return null;
   }
@@ -855,9 +760,10 @@ function DashboardShell({
 
 // src/components/theme-provider.tsx
 var React12 = __toESM(require("react"));
+var import_next_themes2 = require("next-themes");
 function ThemeProvider(_a) {
   var _b = _a, { children } = _b, props = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ React12.createElement(J, __spreadValues({}, props), children);
+  return /* @__PURE__ */ React12.createElement(import_next_themes2.ThemeProvider, __spreadValues({}, props), children);
 }
 
 // src/components/ui/label.tsx
