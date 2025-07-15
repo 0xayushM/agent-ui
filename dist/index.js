@@ -10,18 +10,18 @@ var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
+var __spreadValues = (a, b2) => {
+  for (var prop in b2 || (b2 = {}))
+    if (__hasOwnProp.call(b2, prop))
+      __defNormalProp(a, prop, b2[prop]);
   if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
+    for (var prop of __getOwnPropSymbols(b2)) {
+      if (__propIsEnum.call(b2, prop))
+        __defNormalProp(a, prop, b2[prop]);
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __spreadProps = (a, b2) => __defProps(a, __getOwnPropDescs(b2));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -68,12 +68,20 @@ __export(index_exports, {
   CardFooter: () => CardFooter,
   CardHeader: () => CardHeader,
   CardTitle: () => CardTitle,
+  Checkbox: () => Checkbox,
   DashboardShell: () => DashboardShell,
   Header: () => Header,
   Input: () => Input,
+  Label: () => Label2,
+  LoginLayout: () => LoginLayout,
+  Popover: () => Popover,
+  PopoverAnchor: () => PopoverAnchor,
+  PopoverContent: () => PopoverContent,
+  PopoverTrigger: () => PopoverTrigger,
   PromptForm: () => PromptForm,
   Sidebar: () => Sidebar,
   StatusBadge: () => StatusBadge,
+  ThemeCustomizer: () => ThemeCustomizer,
   ThemeProvider: () => ThemeProvider,
   Toaster: () => Toaster,
   buttonVariants: () => buttonVariants
@@ -352,12 +360,107 @@ var StatusBadge = ({ status }) => {
   return /* @__PURE__ */ React8.createElement(Badge, { className: `${color} text-white capitalize` }, status);
 };
 
+// node_modules/next-themes/dist/index.mjs
+var t = __toESM(require("react"), 1);
+var M = (e, i, s, u, m, a, l, h) => {
+  let d = document.documentElement, w = ["light", "dark"];
+  function p(n) {
+    (Array.isArray(e) ? e : [e]).forEach((y) => {
+      let k = y === "class", S = k && a ? m.map((f) => a[f] || f) : m;
+      k ? (d.classList.remove(...S), d.classList.add(a && a[n] ? a[n] : n)) : d.setAttribute(y, n);
+    }), R(n);
+  }
+  function R(n) {
+    h && w.includes(n) && (d.style.colorScheme = n);
+  }
+  function c() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  if (u) p(u);
+  else try {
+    let n = localStorage.getItem(i) || s, y = l && n === "system" ? c() : n;
+    p(y);
+  } catch (n) {
+  }
+};
+var b = ["light", "dark"];
+var I = "(prefers-color-scheme: dark)";
+var O = typeof window == "undefined";
+var x = t.createContext(void 0);
+var U = { setTheme: (e) => {
+}, themes: [] };
+var z = () => {
+  var e;
+  return (e = t.useContext(x)) != null ? e : U;
+};
+var J = (e) => t.useContext(x) ? t.createElement(t.Fragment, null, e.children) : t.createElement(V, __spreadValues({}, e));
+var N = ["light", "dark"];
+var V = ({ forcedTheme: e, disableTransitionOnChange: i = false, enableSystem: s = true, enableColorScheme: u = true, storageKey: m = "theme", themes: a = N, defaultTheme: l = s ? "system" : "light", attribute: h = "data-theme", value: d, children: w, nonce: p, scriptProps: R }) => {
+  let [c, n] = t.useState(() => H(m, l)), [T, y] = t.useState(() => c === "system" ? E() : c), k = d ? Object.values(d) : a, S = t.useCallback((o) => {
+    let r = o;
+    if (!r) return;
+    o === "system" && s && (r = E());
+    let v = d ? d[r] : r, C = i ? W(p) : null, P = document.documentElement, L = (g) => {
+      g === "class" ? (P.classList.remove(...k), v && P.classList.add(v)) : g.startsWith("data-") && (v ? P.setAttribute(g, v) : P.removeAttribute(g));
+    };
+    if (Array.isArray(h) ? h.forEach(L) : L(h), u) {
+      let g = b.includes(l) ? l : null, D = b.includes(r) ? r : g;
+      P.style.colorScheme = D;
+    }
+    C == null || C();
+  }, [p]), f = t.useCallback((o) => {
+    let r = typeof o == "function" ? o(c) : o;
+    n(r);
+    try {
+      localStorage.setItem(m, r);
+    } catch (v) {
+    }
+  }, [c]), A = t.useCallback((o) => {
+    let r = E(o);
+    y(r), c === "system" && s && !e && S("system");
+  }, [c, e]);
+  t.useEffect(() => {
+    let o = window.matchMedia(I);
+    return o.addListener(A), A(o), () => o.removeListener(A);
+  }, [A]), t.useEffect(() => {
+    let o = (r) => {
+      r.key === m && (r.newValue ? n(r.newValue) : f(l));
+    };
+    return window.addEventListener("storage", o), () => window.removeEventListener("storage", o);
+  }, [f]), t.useEffect(() => {
+    S(e != null ? e : c);
+  }, [e, c]);
+  let Q = t.useMemo(() => ({ theme: c, setTheme: f, forcedTheme: e, resolvedTheme: c === "system" ? T : c, themes: s ? [...a, "system"] : a, systemTheme: s ? T : void 0 }), [c, f, e, T, s, a]);
+  return t.createElement(x.Provider, { value: Q }, t.createElement(_, { forcedTheme: e, storageKey: m, attribute: h, enableSystem: s, enableColorScheme: u, defaultTheme: l, value: d, themes: a, nonce: p, scriptProps: R }), w);
+};
+var _ = t.memo(({ forcedTheme: e, storageKey: i, attribute: s, enableSystem: u, enableColorScheme: m, defaultTheme: a, value: l, themes: h, nonce: d, scriptProps: w }) => {
+  let p = JSON.stringify([s, i, a, e, h, l, u, m]).slice(1, -1);
+  return t.createElement("script", __spreadProps(__spreadValues({}, w), { suppressHydrationWarning: true, nonce: typeof window == "undefined" ? d : "", dangerouslySetInnerHTML: { __html: `(${M.toString()})(${p})` } }));
+});
+var H = (e, i) => {
+  if (O) return;
+  let s;
+  try {
+    s = localStorage.getItem(e) || void 0;
+  } catch (u) {
+  }
+  return s || i;
+};
+var W = (e) => {
+  let i = document.createElement("style");
+  return e && i.setAttribute("nonce", e), i.appendChild(document.createTextNode("*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}")), document.head.appendChild(i), () => {
+    window.getComputedStyle(document.body), setTimeout(() => {
+      document.head.removeChild(i);
+    }, 1);
+  };
+};
+var E = (e) => (e || (e = window.matchMedia(I)), e.matches ? "dark" : "light");
+
 // src/components/ui/sonner.tsx
-var import_next_themes = require("next-themes");
 var import_sonner = require("sonner");
 var Toaster = (_a) => {
   var props = __objRest(_a, []);
-  const { theme = "system" } = (0, import_next_themes.useTheme)();
+  const { theme = "system" } = z();
   return /* @__PURE__ */ React.createElement(
     import_sonner.Toaster,
     __spreadValues({
@@ -617,6 +720,10 @@ function PopoverContent(_a) {
     }, props)
   ));
 }
+function PopoverAnchor(_a) {
+  var props = __objRest(_a, []);
+  return /* @__PURE__ */ React11.createElement(PopoverPrimitive.Anchor, __spreadValues({ "data-slot": "popover-anchor" }, props));
+}
 
 // src/hooks/useTheme.ts
 var import_react = require("react");
@@ -625,7 +732,7 @@ var defaultTheme = {
   secondary: "240 4.8% 95.9%",
   tertiary: "172.5 50.3% 46.9%"
 };
-function useTheme2() {
+function useTheme() {
   const [theme, setTheme] = (0, import_react.useState)(null);
   (0, import_react.useEffect)(() => {
     try {
@@ -692,7 +799,7 @@ var colorSwatches = {
   ]
 };
 function ThemeCustomizer() {
-  const { theme, updateThemeColor, resetTheme } = useTheme2();
+  const { theme, updateThemeColor, resetTheme } = useTheme();
   if (!theme) {
     return null;
   }
@@ -748,10 +855,92 @@ function DashboardShell({
 
 // src/components/theme-provider.tsx
 var React12 = __toESM(require("react"));
-var import_next_themes2 = require("next-themes");
 function ThemeProvider(_a) {
   var _b = _a, { children } = _b, props = __objRest(_b, ["children"]);
-  return /* @__PURE__ */ React12.createElement(import_next_themes2.ThemeProvider, __spreadValues({}, props), children);
+  return /* @__PURE__ */ React12.createElement(J, __spreadValues({}, props), children);
+}
+
+// src/components/ui/label.tsx
+var React13 = __toESM(require("react"));
+var LabelPrimitive = __toESM(require("@radix-ui/react-label"));
+function Label2(_a) {
+  var _b = _a, {
+    className
+  } = _b, props = __objRest(_b, [
+    "className"
+  ]);
+  return /* @__PURE__ */ React13.createElement(
+    LabelPrimitive.Root,
+    __spreadValues({
+      "data-slot": "label",
+      className: cn(
+        "flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+        className
+      )
+    }, props)
+  );
+}
+
+// src/components/layout/loginLayout.tsx
+function LoginLayout(_a) {
+  var _b = _a, {
+    className,
+    title,
+    description,
+    oauthProviders = [],
+    onOAuthSubmit,
+    showCredentialsLogin = true,
+    onCredentialsSubmit,
+    credentialsSubmitLabel = "Login",
+    dividerText = "Or continue with",
+    forgotPasswordLink,
+    signUpLink,
+    legalFooter
+  } = _b, props = __objRest(_b, [
+    "className",
+    "title",
+    "description",
+    "oauthProviders",
+    "onOAuthSubmit",
+    "showCredentialsLogin",
+    "onCredentialsSubmit",
+    "credentialsSubmitLabel",
+    "dividerText",
+    "forgotPasswordLink",
+    "signUpLink",
+    "legalFooter"
+  ]);
+  return /* @__PURE__ */ React.createElement("div", __spreadValues({ className: cn("w-full max-w-md", className) }, props), /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(CardHeader, { className: "text-center" }, /* @__PURE__ */ React.createElement(CardTitle, { className: "text-2xl" }, title), /* @__PURE__ */ React.createElement(CardDescription, null, description)), /* @__PURE__ */ React.createElement(CardContent, null, /* @__PURE__ */ React.createElement("div", { className: "grid gap-6" }, oauthProviders.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "flex flex-col gap-4" }, oauthProviders.map((provider) => /* @__PURE__ */ React.createElement("form", { key: provider.id, action: () => onOAuthSubmit(provider.id) }, /* @__PURE__ */ React.createElement(Button, { type: "submit", variant: "outline", className: "w-full" }, provider.icon, provider.label)))), oauthProviders.length > 0 && showCredentialsLogin && /* @__PURE__ */ React.createElement("div", { className: "relative text-sm text-center after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border" }, /* @__PURE__ */ React.createElement("span", { className: "relative z-10 bg-background px-2 text-muted-foreground" }, dividerText)), showCredentialsLogin && /* @__PURE__ */ React.createElement("form", { action: onCredentialsSubmit }, /* @__PURE__ */ React.createElement("div", { className: "grid gap-4" }, /* @__PURE__ */ React.createElement("div", { className: "grid gap-2" }, /* @__PURE__ */ React.createElement(Label2, { htmlFor: "email" }, "Email"), /* @__PURE__ */ React.createElement(Input, { id: "email", type: "email", name: "email", placeholder: "m@example.com", required: true })), /* @__PURE__ */ React.createElement("div", { className: "grid gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ React.createElement(Label2, { htmlFor: "password" }, "Password"), forgotPasswordLink && /* @__PURE__ */ React.createElement("a", { href: forgotPasswordLink.href, className: "ml-auto text-sm underline-offset-4 hover:underline" }, forgotPasswordLink.label || "Forgot your password?")), /* @__PURE__ */ React.createElement(Input, { id: "password", name: "password", type: "password", required: true })), /* @__PURE__ */ React.createElement(Button, { type: "submit", className: "w-full" }, credentialsSubmitLabel))), signUpLink && /* @__PURE__ */ React.createElement("div", { className: "text-sm text-center" }, signUpLink.text || "Don't have an account? ", /* @__PURE__ */ React.createElement("a", { href: signUpLink.href, className: "underline underline-offset-4" }, signUpLink.label || "Sign up"))))), legalFooter && /* @__PURE__ */ React.createElement("div", { className: "mt-4 text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary" }, legalFooter));
+}
+
+// src/components/ui/checkbox.tsx
+var React14 = __toESM(require("react"));
+var CheckboxPrimitive = __toESM(require("@radix-ui/react-checkbox"));
+var import_lucide_react7 = require("lucide-react");
+function Checkbox(_a) {
+  var _b = _a, {
+    className
+  } = _b, props = __objRest(_b, [
+    "className"
+  ]);
+  return /* @__PURE__ */ React14.createElement(
+    CheckboxPrimitive.Root,
+    __spreadValues({
+      "data-slot": "checkbox",
+      className: cn(
+        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      )
+    }, props),
+    /* @__PURE__ */ React14.createElement(
+      CheckboxPrimitive.Indicator,
+      {
+        "data-slot": "checkbox-indicator",
+        className: "flex items-center justify-center text-current transition-none"
+      },
+      /* @__PURE__ */ React14.createElement(import_lucide_react7.CheckIcon, { className: "size-3.5" })
+    )
+  );
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -764,12 +953,20 @@ function ThemeProvider(_a) {
   CardFooter,
   CardHeader,
   CardTitle,
+  Checkbox,
   DashboardShell,
   Header,
   Input,
+  Label,
+  LoginLayout,
+  Popover,
+  PopoverAnchor,
+  PopoverContent,
+  PopoverTrigger,
   PromptForm,
   Sidebar,
   StatusBadge,
+  ThemeCustomizer,
   ThemeProvider,
   Toaster,
   buttonVariants
