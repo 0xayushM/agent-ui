@@ -5,6 +5,7 @@ import { Sidebar, NavItem } from "./sidebar";
 import { Header } from "./header";
 import { Button } from "../ui/button";
 import { PlusCircle } from "lucide-react";
+import { ThemeCustomizer } from "../ui/themeCustomizer";
 
 interface User {
   name: string;
@@ -13,9 +14,9 @@ interface User {
 }
 
 interface DashboardShellProps {
-  sidebarNavItems: NavItem[];
-  user: User;
-  children: React.ReactNode;
+  sidebarNavItems?: NavItem[];
+  user?: User;
+  children?: React.ReactNode;
 }
 
 export function DashboardShell({
@@ -32,12 +33,13 @@ export function DashboardShell({
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
       <Sidebar
-        navItems={sidebarNavItems}
+        navItems={sidebarNavItems || []}
         isCollapsed={isCollapsed}
         onCollapseToggle={toggleSidebar}
       />
       <div className="flex flex-1 flex-col">
-        <Header user={user}>
+        <Header user={user || { name: "User", email: "user@example.com" }}>
+          <ThemeCustomizer />
           <Button size="sm" className="gap-1">
             <PlusCircle className="size-3.5" />
             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
